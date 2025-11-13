@@ -1,0 +1,30 @@
+.scroll-stack {
+    position: relative;
+    width: 100%;
+    --stack-sticky-offset: 140px;
+    --stack-gap: 5px;
+}
+
+.scroll-stack-container {
+    position: relative;
+    width: 100%;
+}
+
+.scroll-stack-item {
+    display: block;
+    width: 100%;
+}
+
+.scroll-stack-item:not(:last-child) {
+    margin-bottom: var(--stack-item-distance, 120px);
+}
+
+/* Last card scrolls normally, not sticky */
+.scroll-stack-item-last {
+    position: relative;
+    z-index: 40; /* Higher than header z-30 to cover it */
+}
+
+.scroll-stack-card {
+    width: 100%;
+}
