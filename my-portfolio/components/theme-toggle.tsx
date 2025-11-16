@@ -1,6 +1,6 @@
 "use client"
 
-import { FiSun, FiMoon } from "react-icons/fi"
+import { FiMoon, FiSun } from "react-icons/fi"
 
 interface ThemeToggleProps {
     theme: "light" | "dark"
@@ -11,7 +11,7 @@ export default function ThemeToggle({ theme, toggleTheme }: ThemeToggleProps) {
     return (
         <button
             onClick={toggleTheme}
-            className="fixed top-6 md:top-8 right-6 md:right-8 z-50 p-2 md:p-3 rounded-full glass border border-accent/30 dark:border-accent/25 hover:border-accent/50 dark:hover:border-accent/40 transition-all duration-500 hover:shadow-lg hover:shadow-accent/20 group active:scale-95"
+            className="fixed top-3 sm:top-4 md:top-6 right-6 md:right-8 z-50 p-2 md:p-3 rounded-full bg-card/90 dark:bg-card/50 backdrop-blur-md border border-accent/30 dark:border-accent/25 hover:border-accent/50 dark:hover:border-accent/40 transition-all duration-500 hover:shadow-lg hover:shadow-accent/20 group active:scale-95 cursor-pointer"
             aria-label="Toggle theme"
         >
             <div className="relative w-5 h-5 md:w-6 md:h-6">
@@ -20,7 +20,7 @@ export default function ThemeToggle({ theme, toggleTheme }: ThemeToggleProps) {
                         theme === "light" ? "opacity-100 scale-100 rotate-0" : "opacity-0 scale-0 -rotate-180"
                     }`}
                 >
-                    <FiSun className="text-amber-500 group-hover:text-amber-600 transition-colors" size={20} strokeWidth={2.5} />
+                    <FiSun className="text-amber-500 group-hover:text-amber-600 transition-colors" size={20} strokeWidth={3} />
                 </div>
                 <div
                     className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${
@@ -30,7 +30,7 @@ export default function ThemeToggle({ theme, toggleTheme }: ThemeToggleProps) {
                     <FiMoon
                         className="text-blue-400 dark:text-blue-300 group-hover:text-blue-300 dark:group-hover:text-blue-200 transition-colors"
                         size={20}
-                        strokeWidth={2.5}
+                        strokeWidth={3}
                     />
                 </div>
             </div>

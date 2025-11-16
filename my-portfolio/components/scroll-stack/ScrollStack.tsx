@@ -79,8 +79,14 @@ const ScrollStack = ({
                 el.closest("section")?.querySelector(anchorSelector) ??
                 document.querySelector(anchorSelector)
             if (anchor instanceof HTMLElement) {
-                const h = anchor.getBoundingClientRect().height
-                setStickyTopPx(Math.max(0, Math.round(h)))
+                const rect = anchor.getBoundingClientRect()
+                const computedStyle = window.getComputedStyle(anchor)
+                const topValue = computedStyle.top
+                // Extract numeric value from top (e.g., "80px" -> 80)
+                const topOffset = topValue.includes('px') ? parseFloat(topValue) : 0
+                const h = rect.height
+                // Account for both the top offset and the header height
+                setStickyTopPx(Math.max(0, Math.round(topOffset + h + 20)))
                 return
             }
         }

@@ -1,7 +1,8 @@
 "use client"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import ProjectsScrollStack from "./projects-scroll-stack"
+import SectionReveal from "@/components/section-reveal"
+import { useInView } from "@/hooks/use-in-view"
 import { useEffect, useRef, useState } from "react"
+import ProjectsScrollStack from "./projects-scroll-stack"
 
 const projects = [
     {
@@ -11,7 +12,7 @@ const projects = [
         tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
         link: "#",
         github: "#",
-        image: "/portfolio-website.jpg",
+        image: "/images/studyboost.png",
     },
     {
         title: "Vocalyx",
@@ -20,7 +21,7 @@ const projects = [
         tech: ["Python", "Flask", "React", "Speech Recognition"],
         link: "#",
         github: "#",
-        image: "/task-management-app.jpg",
+        image: "/images/vocalyx.png",
     },
     {
         title: "Barangay360",
@@ -29,7 +30,7 @@ const projects = [
         tech: ["React", "Node.js", "MongoDB", "Firebase"],
         link: "#",
         github: "#",
-        image: "/portfolio-website.jpg",
+        image: "/images/barangay360.png",
     },
     {
         title: "SavorSpace",
@@ -38,12 +39,12 @@ const projects = [
         tech: ["React", "Java", "MySQL", "REST API"],
         link: "#",
         github: "#",
-        image: "/task-management-app.jpg",
+        image: "/images/savorspace.png",
     },
 ]
 
 export default function Projects() {
-    const { ref: sectionRef, isVisible } = useScrollAnimation(0.3)
+    const { ref: sectionRef, inView } = useInView({ threshold: 0.2, once: true })
     const headerRef = useRef<HTMLDivElement | null>(null)
     const [isStuck, setIsStuck] = useState(false)
 
@@ -72,21 +73,18 @@ export default function Projects() {
             <div className="max-w-6xl mx-auto">
                 <div
                     ref={headerRef}
-                    className="sticky top-0 z-30 mb-12 md:mb-16 py-4 bg-background"
+                    className="sticky top-20 z-30 mb-12 md:mb-16 py-6 bg-background/95 backdrop-blur-md"
                     data-stack-anchor="projects"
                 >
-                    <h2
-                        className={`text-4xl sm:text-5xl md:text-5xl font-bold mb-6 transition-all duration-1000 ${
-                            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                        }`}
-                    >
+                    <div className="text-center">
+                    <SectionReveal as="h2" className="text-4xl sm:text-5xl md:text-5xl font-bold mb-3" animation="up" durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
                         <span className="gradient-text">Projects</span>
-                    </h2>
-                    <div
-                        className={`w-12 h-1 bg-gradient-to-r from-accent to-accent/60 rounded-full transition-all duration-1000 delay-200 ${
-                            isVisible ? "opacity-100 w-12" : "opacity-0 w-0"
-                        }`}
-                    ></div>
+                    </SectionReveal>
+                    <SectionReveal as="p" className="text-muted-foreground max-w-2xl mx-auto mb-4" animation="up" delayMs={100} durationMs={700} inViewOptions={{ threshold: 0.2, once: true }}>
+                        Selected works and experiments I’ve built and shipped.
+                    </SectionReveal>
+                    <SectionReveal className="w-12 h-1 bg-gradient-to-r from-accent to-accent/60 rounded-full mx-auto" animation="up" delayMs={150} durationMs={800} inViewOptions={{ threshold: 0.2, once: true }} />
+                    </div>
                 </div>
 
                 <ProjectsScrollStack />

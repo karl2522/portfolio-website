@@ -1,32 +1,19 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
-import ThemeProvider from "@/components/theme-provider"
 import AnimatedBackground from "@/components/animated-background"
+import ThemeProvider from "@/components/theme-provider"
+import { Analytics } from "@vercel/analytics/next"
+import type { Metadata } from "next"
+import type React from "react"
+import "./globals.css"
 
 export const metadata: Metadata = {
     title: "Jared Karl Omen | UI/UX Designer & Developer",
-    description: "Premium portfolio showcasing exceptional design and development work",
-    generator: "v0.app",
     icons: {
-        icon: [
-            {
-                url: "/icon-light-32x32.png",
-                media: "(prefers-color-scheme: light)",
-            },
-            {
-                url: "/icon-dark-32x32.png",
-                media: "(prefers-color-scheme: dark)",
-            },
-            {
-                url: "/icon.svg",
-                type: "image/svg+xml",
-            },
-        ],
-        apple: "/apple-icon.png",
-    },
+        icon: "/images/omenLogo.png",
+        apple: "/images/omenLogo.png",
+    }
 }
+
+
 
 export default function RootLayout({
                                        children,
@@ -35,24 +22,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
-        <head>
-            <style>{`
-          @font-face {
-            font-family: 'Certia-Medium';
-            src: url('/fonts/certia-medium.otf') format('opentype');
-            font-weight: 500;
-            font-style: normal;
-            font-display: swap;
-          }
-          @font-face {
-            font-family: 'Certia-Medium';
-            src: url('/fonts/certia-medium.otf') format('opentype');
-            font-weight: 400;
-            font-style: normal;
-            font-display: swap;
-          }
-        `}</style>
-        </head>
+        <head></head>
         <body className="font-sans antialiased">
         <AnimatedBackground />
         <ThemeProvider>{children}</ThemeProvider>

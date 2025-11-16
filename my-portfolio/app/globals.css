@@ -3,6 +3,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+    font-family: 'Certia-Medium';
+    src: url('/fonts/certia-medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
 :root {
   /* Light mode - Blue Premium Design Tokens */
   --background: #ffffff;
@@ -299,6 +306,52 @@
 
 .animate-scroll {
   animation: scroll 30s linear infinite;
+}
+
+.reveal {
+  transition-property: opacity, transform;
+  transition-duration: var(--reveal-duration, 700ms);
+  transition-timing-function: var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1));
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+/* default hidden state */
+.reveal[data-state="out"] {
+  opacity: 0;
+}
+.reveal[data-state="in"] {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal--up[data-state="out"] {
+  transform: translateY(20px);
+}
+.reveal--down[data-state="out"] {
+  transform: translateY(-20px);
+}
+.reveal--left[data-state="out"] {
+  transform: translateX(24px);
+}
+.reveal--right[data-state="out"] {
+  transform: translateX(-24px);
+}
+.reveal--scale[data-state="out"] {
+  transform: scale(0.96);
+}
+
+/* Stagger support: children use --stagger-index to compute delay */
+.reveal--stagger > * {
+  transition-property: opacity, transform;
+  transition-duration: var(--reveal-duration, 700ms);
+  transition-timing-function: var(--reveal-ease, cubic-bezier(0.22, 1, 0.36, 1));
+  transition-delay: calc(var(--reveal-delay, 0ms) + (var(--stagger-index, 0) * var(--stagger-step, 90ms)));
+  opacity: 0;
+  transform: translateY(12px);
+}
+.reveal--stagger[data-state="in"] > * {
+  opacity: 1;
+  transform: none;
 }
 
 .gradient-text {

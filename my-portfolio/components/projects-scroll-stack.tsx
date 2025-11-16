@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect, useState } from "react"
 import { FaArrowPointer } from "react-icons/fa6"
 import ScrollStack, { ScrollStackItem } from "./scroll-stack"
 
@@ -8,30 +9,30 @@ const projects = [
         title: "Studyboost",
         description:
             "An educational startup platform that connects students with study guides, tutors, and academic resources across various universities. Built with modern tech stack for seamless learning experience.",
-        tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-        link: "#",
+        tech: ["React", "Java", "Apache POI", "Stripe", "OCR"],
+        link: "https://studyboost.com",
         github: "#",
-        image: "/portfolio-website.jpg",
+        image: "/images/studyboost.png",
         domain: "studyboost.com",
     },
     {
         title: "Vocalyx",
         description:
             "A capstone project leveraging speech-to-text technology to streamline grading workflows. Features real-time voice input, Excel integration, and automated grade export for efficient educational assessment.",
-        tech: ["Python", "Flask", "React", "Speech Recognition"],
-        link: "#",
+        tech: ["React", "Django", "PostgreSQL", "Firebase", "GCP"],
+        link: "https://vocalyx-frontend.vercel.app",
         github: "#",
-        image: "/task-management-app.jpg",
+        image: "/images/vocalyx.png",
         domain: "vocalyx-frontend.vercel.app",
     },
     {
         title: "Barangay360",
         description:
             "A school final project that digitalizes barangay services and community management. Handles announcements, events, emergencies, and streamlines online processing of forms, IDs, clearances, and permits.",
-        tech: ["React", "Node.js", "MongoDB", "Firebase"],
-        link: "#",
+        tech: ["React", "Java", "PostgreSQL", "CSS"],
+        link: "https://barangay360.vercel.app",
         github: "#",
-        image: "/portfolio-website.jpg",
+        image: "/images/barangay360.png",
         domain: "barangay360.vercel.app",
     },
     {
@@ -39,22 +40,50 @@ const projects = [
         description:
             "A restaurant management system developed as a school final project. Features responsive frontend design, Java backend architecture with user authentication, comprehensive menu management, and order processing.",
         tech: ["React", "Java", "MySQL", "REST API"],
-        link: "#",
+        link: "https://savorspace-frontend.vercel.app",
         github: "#",
-        image: "/task-management-app.jpg",
+        image: "/images/savorspace.png",
         domain: "savorspace-frontend.vercel.app",
     },
 ]
 
 export default function ProjectsScrollStack() {
+    const [isDark, setIsDark] = useState(false)
+
+    useEffect(() => {
+        // Check initial theme
+        const checkTheme = () => {
+            setIsDark(document.documentElement.classList.contains("dark"))
+        }
+        
+        checkTheme()
+
+        // Watch for theme changes
+        const observer = new MutationObserver(checkTheme)
+        observer.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["class"],
+        })
+
+        return () => observer.disconnect()
+    }, [])
+
     return (
         <ScrollStack
-            stickyOffset={140}
+            stickyOffset={280}
             anchorSelector='[data-stack-anchor="projects"]'
             itemDistance={120}
         >
             {projects.map((project, index) => {
                 const isLaptopLeft = index % 2 === 0
+                
+                // Use theme-specific image for Studyboost
+                const getImageSrc = () => {
+                    if (project.title === "Studyboost") {
+                        return isDark ? "/images/studyboost.png" : "/images/studyboost-light.png"
+                    }
+                    return project.image || "/placeholder.svg"
+                }
 
                 return (
                     <ScrollStackItem
@@ -83,11 +112,11 @@ export default function ProjectsScrollStack() {
                                                     </div>
                                                 </div>
                                                 {/* Screen Content - Project Image */}
-                                                <div className="aspect-video bg-white dark:bg-gray-800 overflow-hidden">
+                                                <div className="aspect-video bg-white dark:bg-gray-800 overflow-hidden flex items-center justify-center">
                                                     <img
-                                                        src={project.image || "/placeholder.svg"}
+                                                        src={getImageSrc()}
                                                         alt={project.title}
-                                                        className="w-full h-full object-cover"
+                                                        className="w-full h-full object-contain"
                                                     />
                                                 </div>
                                             </div>
@@ -119,6 +148,8 @@ export default function ProjectsScrollStack() {
                                 <div className="flex gap-4">
                                     <a
                                         href={project.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
                                         className="group/btn relative inline-flex items-center gap-3 px-8 py-2 bg-accent text-white text-sm font-semibold rounded-lg transition-all duration-300 hover:bg-blue-600 dark:hover:bg-accent/80 active:bg-blue-700 dark:active:bg-accent/70"
                                     >
                                         <span>View Site</span>

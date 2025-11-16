@@ -1,6 +1,7 @@
 "use client"
-import { FaPalette, FaCode, FaRocket, FaGamepad } from "react-icons/fa6"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import SectionReveal from "@/components/section-reveal"
+import { useInView } from "@/hooks/use-in-view"
+import { FaCode, FaGamepad, FaLaptopCode, FaLightbulb, FaPaintbrush, FaPalette, FaRocket } from "react-icons/fa6"
 
 const hobbies = [
     {
@@ -9,8 +10,8 @@ const hobbies = [
         icon: FaPalette,
     },
     {
-        title: "Open Source",
-        description: "Contributing to projects and building tools that help the developer community grow and thrive.",
+        title: "Continuous Learning",
+        description: "Always exploring new technologies, frameworks, and best practices to stay current and improve my skills.",
         icon: FaCode,
     },
     {
@@ -26,84 +27,107 @@ const hobbies = [
 ]
 
 export default function About() {
-    const { ref: sectionRef, isVisible } = useScrollAnimation(0.3)
+    const { ref: sectionRef } = useInView({ threshold: 0.2, once: true })
 
     return (
         <section id="about" ref={sectionRef} className="w-full py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 bg-background">
             <div className="max-w-6xl mx-auto">
-                <div className="mb-12 md:mb-16">
-                    <h2
-                        className={`text-4xl sm:text-5xl md:text-5xl font-bold mb-6 transition-all duration-1000 ${
-                            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                        }`}
-                    >
-                        <span className="gradient-text">About</span>
-                    </h2>
-                    <div
-                        className={`w-12 h-1 bg-gradient-to-r from-accent to-accent/60 rounded-full transition-all duration-1000 delay-200 ${
-                            isVisible ? "opacity-100 w-12" : "opacity-0 w-0"
-                        }`}
-                    ></div>
+                <div className="mb-12 md:mb-16 text-center">
+                    <SectionReveal as="h2" className="text-4xl sm:text-5xl md:text-5xl font-bold mb-3" animation="up" durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
+                        <span className="gradient-text">About Me</span>
+                    </SectionReveal>
+                    <SectionReveal as="p" className="text-muted-foreground max-w-2xl mx-auto mb-4" animation="up" delayMs={100} durationMs={700} inViewOptions={{ threshold: 0.2, once: true }}>
+                        A snapshot of who I am and what drives my work.
+                    </SectionReveal>
+                    <SectionReveal className="w-12 h-1 bg-gradient-to-r from-accent to-accent/60 rounded-full mx-auto" animation="up" delayMs={150} durationMs={800} inViewOptions={{ threshold: 0.2, once: true }} />
                 </div>
 
                 {/* Main About Content */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-20">
-                    <div
-                        className={`space-y-4 md:space-y-6 transition-all duration-1000 ${
-                            isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-                        }`}
-                    >
-                        <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
-                            I'm a passionate developer and designer focused on creating accessible, pixel-perfect digital experiences
-                            that blend thoughtful design with robust engineering.
+                <div className="mb-16 md:mb-20">
+                    <SectionReveal className="max-w-3xl mx-auto text-center mb-12 md:mb-16" animation="up" durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
+                        <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
+                            I&apos;m a passionate developer and designer focused on creating accessible, pixel-perfect digital experiences
+                            that blend thoughtful design with robust engineering. I believe that understanding the intersection of design
+                            and development leads to better user experiences.
                         </p>
-                        <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
-                            My expertise spans frontend development, UI/UX design, and performance optimization. I believe that
-                            understanding the intersection of design and development leads to better user experiences.
-                        </p>
-                    </div>
+                    </SectionReveal>
 
-                    <div
-                        className={`space-y-4 md:space-y-6 transition-all duration-1000 delay-200 ${
-                            isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
-                        }`}
-                    >
-                        <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
-                            I've worked on projects ranging from startups to established companies, helping teams deliver high-quality
-                            digital products. Each project is an opportunity to solve interesting problems and create something
-                            meaningful.
-                        </p>
-                        <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
-                            I'm constantly learning and evolving my craft, whether it's mastering new technologies, exploring design
-                            systems, or understanding the latest web development trends.
-                        </p>
+                    {/* Key Highlights */}
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                        <SectionReveal
+                            className="group"
+                            animation="up"
+                            delayMs={100}
+                            durationMs={800}
+                            inViewOptions={{ threshold: 0.2, once: true }}
+                        >
+                            <div className="relative p-6 md:p-8 rounded-xl bg-card border border-border hover:border-accent/40 transition-all duration-300 backdrop-blur-sm h-full text-center hover:-translate-y-1 hover:shadow-lg">
+                                <div className="flex items-center justify-center mb-4">
+                                    <div className="flex items-center justify-center h-14 w-14 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-colors duration-300">
+                                        <FaLaptopCode className="text-accent text-2xl" />
+                                    </div>
+                                </div>
+                                <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">Frontend Development</h3>
+                                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                                    Building responsive, performant interfaces with modern technologies
+                                </p>
+                            </div>
+                        </SectionReveal>
+
+                        <SectionReveal
+                            className="group"
+                            animation="up"
+                            delayMs={200}
+                            durationMs={800}
+                            inViewOptions={{ threshold: 0.2, once: true }}
+                        >
+                            <div className="relative p-6 md:p-8 rounded-xl bg-card border border-border hover:border-accent/40 transition-all duration-300 backdrop-blur-sm h-full text-center hover:-translate-y-1 hover:shadow-lg">
+                                <div className="flex items-center justify-center mb-4">
+                                    <div className="flex items-center justify-center h-14 w-14 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-colors duration-300">
+                                        <FaPaintbrush className="text-accent text-2xl" />
+                                    </div>
+                                </div>
+                                <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">UI/UX Design</h3>
+                                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                                    Crafting intuitive, beautiful interfaces that users love to interact with
+                                </p>
+                            </div>
+                        </SectionReveal>
+
+                        <SectionReveal
+                            className="group"
+                            animation="up"
+                            delayMs={300}
+                            durationMs={800}
+                            inViewOptions={{ threshold: 0.2, once: true }}
+                        >
+                            <div className="relative p-6 md:p-8 rounded-xl bg-card border border-border hover:border-accent/40 transition-all duration-300 backdrop-blur-sm h-full text-center hover:-translate-y-1 hover:shadow-lg">
+                                <div className="flex items-center justify-center mb-4">
+                                    <div className="flex items-center justify-center h-14 w-14 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-colors duration-300">
+                                        <FaLightbulb className="text-accent text-2xl" />
+                                    </div>
+                                </div>
+                                <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">Problem Solving</h3>
+                                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                                    Turning complex challenges into elegant, user-friendly solutions
+                                </p>
+                            </div>
+                        </SectionReveal>
                     </div>
                 </div>
 
                 {/* Beyond Coding Section */}
                 <div>
-                    <h3
-                        className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12 transition-all duration-1000 ${
-                            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                        }`}
-                    >
+                    <SectionReveal as="h3" className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12" animation="up" durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
                         <span className="text-foreground">Beyond </span>
                         <span className="gradient-text">Coding</span>
-                    </h3>
+                    </SectionReveal>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+                    <SectionReveal className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6" animation="up" staggerChildren staggerStepMs={100} durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
                         {hobbies.map((hobby, index) => {
                             const Icon = hobby.icon
                             return (
-                                <div
-                                    key={hobby.title}
-                                    className={`relative transition-all duration-1000 ${
-                                        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-                                    }`}
-                                    style={{
-                                        transitionDelay: isVisible ? `${(index + 1) * 100}ms` : "0ms",
-                                    }}
-                                >
+                                <div key={hobby.title} style={{ ["--stagger-index" as string]: index } as React.CSSProperties}>
                                     <div className="relative p-5 md:p-6 rounded-lg md:rounded-xl bg-card border border-border transition-all duration-300 backdrop-blur-sm h-full">
                                         <div className="flex gap-4 items-start">
                                             <div className="flex-shrink-0">
@@ -122,7 +146,7 @@ export default function About() {
                                 </div>
                             )
                         })}
-                    </div>
+                    </SectionReveal>
                 </div>
             </div>
         </section>

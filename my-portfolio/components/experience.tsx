@@ -1,13 +1,14 @@
 "use client"
 
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
+import SectionReveal from "@/components/section-reveal"
+import { useInView } from "@/hooks/use-in-view"
 
 const experiences = [
     {
-        title: "Full-Stack Developer",
+        title: "Frontend Developer",
         company: "Freelance Projects",
         description: "Building responsive web applications with modern technologies",
-        year: "2024",
+        year: "2025",
         type: "current",
         skills: ["React", "Next.js", "Tailwind CSS", "Node.js"],
     },
@@ -38,59 +39,43 @@ const experiences = [
 ]
 
 export default function Experience() {
-    const { ref: sectionRef, isVisible } = useScrollAnimation(0.3)
+    const { ref: sectionRef, inView } = useInView({ threshold: 0.2, once: true })
 
     return (
         <section
             id="experience"
             ref={sectionRef}
-            className="w-full py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 bg-background"
+            className="w-full py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-8 lg:px-12 bg-background"
         >
-            <div className="max-w-5xl mx-auto">
+            <div className="max-w-6xl mx-auto">
                 {/* Header */}
-                <div className="mb-16 md:mb-20">
-                    <div
-                        className={`flex items-center gap-3 mb-6 transition-all duration-1000 ${
-                            isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
-                        }`}
-                    >
-                        <div className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center border border-accent/40">
-                            <span className="text-accent text-lg">📅</span>
-                        </div>
-                        <h2 className="text-4xl sm:text-5xl md:text-5xl font-bold">
+                <div className="mb-12 sm:mb-16 md:mb-20 text-center">
+                    <SectionReveal className="flex items-center justify-center mb-3" animation="left" durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-bold">
                             <span className="gradient-text">Experience</span>
                         </h2>
-                    </div>
-                    <div
-                        className={`w-12 h-1 bg-gradient-to-r from-accent to-accent/60 rounded-full transition-all duration-1000 delay-200 ${
-                            isVisible ? "opacity-100 w-12" : "opacity-0 w-0"
-                        }`}
-                    ></div>
+                    </SectionReveal>
+                    <SectionReveal as="p" className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-4 px-2" animation="up" delayMs={100} durationMs={700} inViewOptions={{ threshold: 0.2, once: true }}>
+                        Roles, responsibilities, and milestones along my journey.
+                    </SectionReveal>
+                    <SectionReveal className="w-12 h-1 bg-gradient-to-r from-accent to-accent/60 rounded-full mx-auto" animation="up" delayMs={150} durationMs={800} inViewOptions={{ threshold: 0.2, once: true }} />
                 </div>
 
                 {/* Timeline */}
                 <div className="relative">
                     {/* Timeline Line */}
-                    <div className="absolute left-4 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent via-accent/50 to-accent/20"></div>
+                    <div className="absolute left-3 sm:left-4 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent via-accent/50 to-accent/20"></div>
 
                     {/* Timeline Items */}
-                    <div className="space-y-8 md:space-y-12">
+                    <div className="space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12">
                         {experiences.map((exp, index) => (
-                            <div
-                                key={index}
-                                className={`transition-all duration-1000 ${
-                                    isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                                }`}
-                                style={{
-                                    transitionDelay: isVisible ? `${index * 100}ms` : "0ms",
-                                }}
-                            >
-                                <div className="flex flex-col md:flex-row gap-4 md:gap-8">
+                            <SectionReveal key={index} animation="up" durationMs={800} delayMs={index * 100} inViewOptions={{ threshold: 0.2, once: true }}>
+                                <div className="flex flex-col md:flex-row gap-4 sm:gap-5 md:gap-6 lg:gap-8">
                                     {/* Timeline Circle */}
-                                    <div className="relative flex items-start md:w-1/2 md:justify-end md:pr-8">
-                                        <div className="flex-1 md:flex-none">
+                                    <div className="relative flex items-start md:w-1/2 md:justify-end md:pr-6 lg:pr-8">
+                                        <div className="flex-1 md:flex-none w-full md:w-auto">
                                             <div
-                                                className={`absolute left-0 top-2 md:left-auto md:right-0 md:translate-x-1/2 w-4 h-4 rounded-full border-3 transition-all duration-500 ${
+                                                className={`absolute left-0 top-1.5 sm:top-2 md:left-auto md:right-0 md:translate-x-1/2 w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 sm:border-3 transition-all duration-500 ${
                                                     exp.type === "current"
                                                         ? "bg-accent border-accent shadow-lg shadow-accent/50 md:translate-x-1/2"
                                                         : "bg-background border-accent/40 hover:border-accent"
@@ -100,35 +85,35 @@ export default function Experience() {
                                                     <div className="absolute inset-0 rounded-full animate-pulse-slow bg-accent/20"></div>
                                                 )}
                                             </div>
-                                            <div className="pl-8 md:pl-0 md:text-right">
-                                                <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">{exp.title}</h3>
-                                                <p className="text-sm md:text-base text-accent font-semibold mb-2">{exp.company}</p>
-                                                <p className="text-xs md:text-sm text-muted-foreground">{exp.year}</p>
+                                            <div className="pl-6 sm:pl-8 md:pl-0 md:text-right">
+                                                <h3 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-1 leading-tight">{exp.title}</h3>
+                                                <p className="text-xs sm:text-sm md:text-base text-accent font-semibold mb-1 sm:mb-2">{exp.company}</p>
+                                                <p className="text-xs sm:text-sm md:text-base text-muted-foreground">{exp.year}</p>
                                             </div>
                                         </div>
                                     </div>
 
                                     {/* Content Card */}
-                                    <div className="md:w-1/2 md:pl-8">
-                                        <div className="group relative p-4 md:p-5 rounded-lg border border-border bg-card/50 hover:bg-card hover:border-accent/40 transition-all duration-300 backdrop-blur-sm">
-                                            <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    <div className="md:w-1/2 md:pl-6 lg:pl-8">
+                                        <div className="group relative p-3 sm:p-4 md:p-5 lg:p-6 rounded-lg md:rounded-xl border border-border bg-card/50 hover:bg-card hover:border-accent/40 transition-all duration-300 backdrop-blur-sm">
+                                            <div className="absolute inset-0 rounded-lg md:rounded-xl bg-gradient-to-r from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-                                            <p className="text-sm md:text-base text-muted-foreground relative z-10 mb-3">{exp.description}</p>
+                                            <p className="text-xs sm:text-sm md:text-base lg:text-lg text-muted-foreground relative z-10 mb-3 sm:mb-4 leading-relaxed">{exp.description}</p>
 
-                                            <div className="flex flex-wrap gap-2">
+                                            <div className="flex flex-wrap gap-1.5 sm:gap-2">
                                                 {exp.skills.map((skill) => (
                                                     <span
                                                         key={skill}
-                                                        className="text-xs px-2 py-1 rounded-full bg-accent/10 text-accent border border-accent/20 transition-all duration-300 group-hover:bg-accent/20 group-hover:border-accent/40"
+                                                        className="text-[10px] sm:text-xs px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-accent/10 text-accent border border-accent/20 transition-all duration-300 group-hover:bg-accent/20 group-hover:border-accent/40 whitespace-nowrap"
                                                     >
-                            {skill}
-                          </span>
+                                                        {skill}
+                                                    </span>
                                                 ))}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </SectionReveal>
                         ))}
                     </div>
                 </div>

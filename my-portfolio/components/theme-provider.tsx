@@ -2,8 +2,23 @@
 
 import type React from "react"
 
-import { useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 import ThemeToggle from "./theme-toggle"
+
+interface ThemeContextType {
+    theme: "light" | "dark"
+    toggleTheme: () => void
+}
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
+
+export function useTheme() {
+    const context = useContext(ThemeContext)
+    if (!context) {
+        throw new Error("useTheme must be used within ThemeProvider")
+    }
+    return context
+}
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [mounted, setMounted] = useState(false)
@@ -37,9 +52,9 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
     if (!mounted) return <>{children}</>
 
     return (
-        <>
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
             {children}
-        </>
+        </ThemeContext.Provider>
     )
 }
