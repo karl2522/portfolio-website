@@ -110,10 +110,10 @@ export default function TermsOfService() {
                             </p>
                             <div className="mt-4">
                                 <a
-                                    href="mailto:hello@jaredomen.com"
+                                    href="mailto:joredomen@gmail.com"
                                     className="inline-flex items-center gap-2 text-accent hover:text-accent/80 transition-colors duration-300 font-semibold"
                                 >
-                                    hello@jaredomen.com
+                                    joredomen@gmail.com
                                 </a>
                             </div>
                         </div>
