@@ -106,8 +106,8 @@ export default function Experience() {
                                                         key={skill}
                                                         className="text-[10px] sm:text-xs px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-accent/10 text-accent border border-accent/20 transition-all duration-300 group-hover:bg-accent/20 group-hover:border-accent/40 whitespace-nowrap"
                                                     >
-                                                        {skill}
-                                                    </span>
+                            {skill}
+                          </span>
                                                 ))}
                                             </div>
                                         </div>
