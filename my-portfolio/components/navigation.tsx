@@ -128,7 +128,9 @@ export default function Navigation() {
                         return (
                             <button
                                 key={item.id}
-                                ref={el => buttonsRef.current[index] = el}
+                                ref={el => {
+                                    buttonsRef.current[index] = el
+                                }}
                                 onClick={() => scrollToSection(item.sectionId)}
                                 className={`relative px-3 py-1.5 sm:px-4 sm:py-2 md:px-5 md:py-2 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 ease-out cursor-pointer ${
                                     isActive
