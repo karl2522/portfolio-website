@@ -2,14 +2,14 @@
 
 import { useEffect, useState } from "react"
 import { FaReact, FaGit } from "react-icons/fa6"
-import { SiTypescript, SiTailwindcss, SiNextdotjs, SiStorybook, SiRadixui } from "react-icons/si"
+import { SiTypescript, SiTailwindcss, SiNextdotjs, SiDjango, SiRadixui } from "react-icons/si"
 
 const techItems = [
     { name: "NEXTJS", icon: SiNextdotjs },
     { name: "RESPONSIVE", icon: null },
     { name: "TAILWIND", icon: SiTailwindcss },
     { name: "TYPESCRIPT", icon: SiTypescript },
-    { name: "STORYBOOK", icon: SiStorybook },
+    { name: "DJANGO", icon: SiDjango },
     { name: "GITHUB", icon: FaGit },
     { name: "REACT", icon: FaReact },
     { name: "RADIX UI", icon: SiRadixui },

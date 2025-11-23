@@ -11,7 +11,7 @@ const hobbies = [
     },
     {
         title: "Continuous Learning",
-        description: "Always exploring new technologies, frameworks, and best practices to stay current and improve my skills.",
+        description: "Always learning new technologies to grow as a full-stack developer and stay aligned with best practices.",
         icon: FaCode,
     },
     {
@@ -46,9 +46,9 @@ export default function About() {
                 <div className="mb-16 md:mb-20">
                     <SectionReveal className="max-w-3xl mx-auto text-center mb-12 md:mb-16" animation="up" durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
                         <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
-                            I&apos;m a passionate developer and designer focused on creating accessible, pixel-perfect digital experiences
-                            that blend thoughtful design with robust engineering. I believe that understanding the intersection of design
-                            and development leads to better user experiences.
+                            I'm a passionate developer and designer focused on creating accessible, pixel-perfect digital experiences.
+                            With full-stack capabilities and a strong design perspective,
+                            I build solutions that unite thoughtful design and solid engineering.
                         </p>
                     </SectionReveal>
 
