@@ -96,7 +96,7 @@ export default function Contact() {
                                 {/* Resume Link */}
                                 <div className="flex items-center justify-center md:justify-start gap-3">
                                     <a
-                                        href="https://drive.google.com/file/d/1U_20hyBAxqP1UKq_84xLobUgfddcTGbs/view?usp=sharing"
+                                        href="https://drive.google.com/file/d/1dve8Yyr25zadWArHJl6VgY728IAQADuc/view?usp=sharing"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-accent/10 hover:bg-accent/20 text-foreground hover:text-accent transition-all duration-300 hover:-translate-y-0.5"
