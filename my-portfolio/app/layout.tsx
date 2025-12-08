@@ -6,7 +6,7 @@ import type React from "react"
 import "./globals.css"
 
 export const metadata: Metadata = {
-    title: "Jared Karl Omen | UI/UX Designer & Developer",
+    title: "Jared Karl Omen | Full-Stack Developer",
     icons: {
         icon: "/images/omenLogo.png",
         apple: "/images/omenLogo.png",

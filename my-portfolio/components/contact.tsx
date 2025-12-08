@@ -2,7 +2,7 @@
 
 import SectionReveal from "@/components/section-reveal"
 import { useInView } from "@/hooks/use-in-view"
-import { FaEnvelope, FaFacebook, FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6"
+import { FaArrowUpRightFromSquare, FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa6"
 
 export default function Contact() {
     const { ref: sectionRef } = useInView({ threshold: 0.2, once: true })
@@ -34,11 +34,6 @@ export default function Contact() {
             href: "https://www.linkedin.com/in/jared-karl-omen-11131a386/",
             color: "text-foreground",
         },
-    ]
-
-    const socialLinks = [
-        { icon: FaFacebook, href: "https://www.facebook.com/jaredkarl2", label: "Facebook" },
-        { icon: FaInstagram, href: "https://www.instagram.com/jaerheadd/", label: "Instagram" },
     ]
 
     return (
@@ -98,24 +93,18 @@ export default function Contact() {
                                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto md:mx-0 mb-6">
                                     Let&apos;s discuss how we can bring your vision to life with thoughtful design and robust development. I&apos;m here to help turn your ideas into exceptional digital experiences.
                                 </p>
-                                {/* Social Links */}
-                                <div className="flex items-center justify-center md:justify-start gap-4">
-                                    <span className="text-sm text-muted-foreground">Follow me:</span>
-                                    {socialLinks.map((social) => {
-                                        const Icon = social.icon
-                                        return (
-                                            <a
-                                                key={social.label}
-                                                href={social.href}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="p-2 rounded-lg bg-accent/10 hover:bg-accent/20 text-muted-foreground hover:text-accent transition-all duration-300 hover:-translate-y-0.5"
-                                                aria-label={social.label}
-                                            >
-                                                <Icon size={18} />
-                                            </a>
-                                        )
-                                    })}
+                                {/* Resume Link */}
+                                <div className="flex items-center justify-center md:justify-start gap-3">
+                                    <a
+                                        href="https://drive.google.com/file/d/1U_20hyBAxqP1UKq_84xLobUgfddcTGbs/view?usp=sharing"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-2 px-3 py-2 rounded-lg bg-accent/10 hover:bg-accent/20 text-foreground hover:text-accent transition-all duration-300 hover:-translate-y-0.5"
+                                        aria-label="Resume"
+                                    >
+                                        <span className="text-sm font-semibold">View Resume</span>
+                                        <FaArrowUpRightFromSquare size={14} />
+                                    </a>
                                 </div>
                             </div>
                             {/* CTA Button */}

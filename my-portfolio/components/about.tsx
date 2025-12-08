@@ -1,7 +1,7 @@
 "use client"
 import SectionReveal from "@/components/section-reveal"
 import { useInView } from "@/hooks/use-in-view"
-import { FaCode, FaGamepad, FaLaptopCode, FaLightbulb, FaPaintbrush, FaPalette, FaRocket } from "react-icons/fa6"
+import { FaCode, FaGamepad, FaLaptopCode, FaPaintbrush, FaPalette, FaRocket, FaServer } from "react-icons/fa6"
 
 const hobbies = [
     {
@@ -46,7 +46,7 @@ export default function About() {
                 <div className="mb-16 md:mb-20">
                     <SectionReveal className="max-w-3xl mx-auto text-center mb-12 md:mb-16" animation="up" durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
                         <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
-                            I'm a passionate developer and designer focused on creating accessible, pixel-perfect digital experiences.
+                            I&apos;m a passionate developer and designer focused on creating accessible, pixel-perfect digital experiences.
                             With full-stack capabilities and a strong design perspective,
                             I build solutions that unite thoughtful design and solid engineering.
                         </p>
@@ -104,12 +104,12 @@ export default function About() {
                             <div className="relative p-6 md:p-8 rounded-xl bg-card border border-border hover:border-accent/40 transition-all duration-300 backdrop-blur-sm h-full text-center hover:-translate-y-1 hover:shadow-lg">
                                 <div className="flex items-center justify-center mb-4">
                                     <div className="flex items-center justify-center h-14 w-14 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-colors duration-300">
-                                        <FaLightbulb className="text-accent text-2xl" />
+                                        <FaServer className="text-accent text-2xl" />
                                     </div>
                                 </div>
-                                <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">Problem Solving</h3>
+                                <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">Backend Development</h3>
                                 <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                                    Turning complex challenges into elegant, user-friendly solutions
+                                    Designing scalable APIs, integrating databases, and building reliable server-side systems
                                 </p>
                             </div>
                         </SectionReveal>

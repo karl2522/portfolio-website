@@ -14,6 +14,14 @@ const certifications = [
         color: "from-orange-400 to-orange-600",
     },
     {
+        title: "AWS Cloud Architecting",
+        issuer: "Amazon Web Services",
+        date: "December 2025",
+        icon: FaCloud,
+        link: "https://drive.google.com/file/d/1Z-MQrbf6qumuGTjha2MjE2edW0-uYqGc/view?usp=drive_link",
+        color: "from-teal-400 to-teal-600",
+    },
+    {
         title: "PrompQuest Hackathon",
         issuer: "Proweaver",
         date: "September 2025",

@@ -152,10 +152,10 @@ export default function ProjectsScrollStack() {
                                         rel="noopener noreferrer"
                                         className="group/btn relative inline-flex items-center gap-3 px-8 py-2 bg-accent text-white text-sm font-semibold rounded-lg transition-all duration-300 hover:bg-blue-600 dark:hover:bg-accent/80 active:bg-blue-700 dark:active:bg-accent/70"
                                     >
-                                        <span>View Site</span>
-                                        <FaArrowPointer 
-                                            size={16} 
-                                            className="animate-click-arrow -rotate-12" 
+                                        <span>View Demo</span>
+                                        <FaArrowPointer
+                                            size={16}
+                                            className="animate-click-arrow -rotate-12"
                                         />
                                     </a>
                                 </div>

@@ -5,9 +5,9 @@ import { useInView } from "@/hooks/use-in-view"
 
 const experiences = [
     {
-        title: "Frontend Developer",
+        title: "Full-Stack Developer",
         company: "Freelance Projects",
-        description: "Building responsive web applications with modern technologies",
+        description: "Building full-stack web applications with modern front- and back-end technologies",
         year: "2025",
         type: "current",
         skills: ["React", "Next.js", "Tailwind CSS", "Node.js"],

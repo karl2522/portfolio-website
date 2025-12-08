@@ -11,9 +11,14 @@ export default function Hero() {
         setIsVisible(true)
     }, [])
 
-    const scrollToNext = () => {
-        const bannerSection = document.getElementById("tech-banner")
-        bannerSection?.scrollIntoView({ behavior: "smooth" })
+    const scrollToProjects = () => {
+        const projectsSection = document.getElementById("projects")
+        projectsSection?.scrollIntoView({ behavior: "smooth" })
+    }
+
+    const scrollToAbout = () => {
+        const aboutSection = document.getElementById("about")
+        aboutSection?.scrollIntoView({ behavior: "smooth" })
     }
 
     return (
@@ -57,7 +62,7 @@ export default function Hero() {
                         <div className="space-y-4 md:space-y-6">
                             <SectionReveal as="div" className="inline-block" animation="up" delayMs={100} durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
                 <span className="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-accent/10 dark:bg-accent/15 border border-accent/30 text-accent text-xs md:text-sm font-semibold">
-                  UI/UX Designer & Frontend Developer
+                  Full-Stack Developer
                 </span>
                             </SectionReveal>
                             <SectionReveal as="h1" className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight tracking-tighter" animation="up" delayMs={200} durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
@@ -68,8 +73,7 @@ export default function Hero() {
                                 <div className="h-1 w-20 bg-gradient-to-r from-accent via-accent to-accent/60 rounded-full animate-pulse-slow"></div>
                             </SectionReveal>
                             <SectionReveal as="p" className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto font-light" animation="up" delayMs={400} durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
-                                IT student and freelance frontend developer. Passionate about building responsive, beautiful interfaces
-                                with exceptional UX and clean code.
+                                IT student and freelance full-stack developer, building responsive, beautiful interfaces and reliable backends with exceptional UX, clean code, and scalable APIs.
                             </SectionReveal>
                         </div>
 
@@ -89,7 +93,7 @@ export default function Hero() {
                 </span>
                             </button>
                             <button
-                                onClick={scrollToNext}
+                                onClick={scrollToProjects}
                                 className="group relative px-6 md:px-8 py-2.5 md:py-3 border-2 border-accent text-accent rounded-lg font-semibold transition-all duration-300 active:scale-95 text-sm md:text-base cursor-pointer flex items-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/20 hover:bg-accent/5 overflow-hidden"
                                 style={{ ["--stagger-index" as any]: 1 }}
                             >
@@ -107,7 +111,7 @@ export default function Hero() {
 
             {/* Scroll indicator */}
             <button
-                onClick={scrollToNext}
+                onClick={scrollToAbout}
                 className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce text-accent hover:text-accent/80 transition-colors duration-300 hover:scale-110"
                 aria-label="Scroll to next section"
             >
