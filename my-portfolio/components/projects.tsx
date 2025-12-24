@@ -68,12 +68,12 @@ export default function Projects() {
         <section
             id="projects"
             ref={sectionRef}
-            className="w-full py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8 bg-background"
+            className="w-full py-16 sm:py-20 md:py-24 px-4 sm:px-6 md:px-8"
         >
             <div className="max-w-6xl mx-auto">
                 <div
                     ref={headerRef}
-                    className="sticky top-20 z-30 mb-12 md:mb-16 py-6 bg-background/95 backdrop-blur-md"
+                    className="sticky top-20 z-30 mb-12 md:mb-16 py-6"
                     data-stack-anchor="projects"
                 >
                     <div className="text-center">

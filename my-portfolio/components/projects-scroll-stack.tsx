@@ -6,6 +6,16 @@ import ScrollStack, { ScrollStackItem } from "./scroll-stack"
 
 const projects = [
     {
+        title: "Briefly",
+        description:
+            "A free AI platform for students offering powerful educational tools including study guide generator, smart summarizer, quiz creator, and flashcard generator. Designed to help students learn faster and more effectively—completely free forever.",
+        tech: ["NextJS", "NestJS", "PostgreSQL", "Gemini AI", "Railway"],
+        link: "https://briefly-liard.vercel.app/",
+        github: "#",
+        image: "/images/briefly.png",
+        domain: "briefly-liard.vercel.app",
+    },
+    {
         title: "Studyboost",
         description:
             "An educational startup platform that connects students with study guides, tutors, and academic resources across various universities. Built with modern tech stack for seamless learning experience.",
@@ -20,10 +30,10 @@ const projects = [
         description:
             "A capstone project leveraging speech-to-text technology to streamline grading workflows. Features real-time voice input, Excel integration, and automated grade export for efficient educational assessment.",
         tech: ["React", "Django", "PostgreSQL", "Firebase", "GCP"],
-        link: "https://vocalyx-frontend.vercel.app",
+        link: "https://vocalyx.online",
         github: "#",
         image: "/images/vocalyx.png",
-        domain: "vocalyx-frontend.vercel.app",
+        domain: "vocalyx.online",
     },
     {
         title: "Barangay360",
