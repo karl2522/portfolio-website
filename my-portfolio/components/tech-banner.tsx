@@ -1,12 +1,12 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { FaReact, FaGit } from "react-icons/fa6"
-import { SiTypescript, SiTailwindcss, SiNextdotjs, SiDjango, SiRadixui } from "react-icons/si"
+import { FaGit, FaReact } from "react-icons/fa6"
+import { SiDjango, SiNextdotjs, SiRadixui, SiRedis, SiTailwindcss, SiTypescript } from "react-icons/si"
 
 const techItems = [
     { name: "NEXTJS", icon: SiNextdotjs },
-    { name: "RESPONSIVE", icon: null },
+    { name: "REDIS", icon: SiRedis },
     { name: "TAILWIND", icon: SiTailwindcss },
     { name: "TYPESCRIPT", icon: SiTypescript },
     { name: "DJANGO", icon: SiDjango },
@@ -45,14 +45,13 @@ export default function TechBanner() {
                         return (
                             <div
                                 key={index}
-                                className={`flex items-center gap-3 px-4 md:px-6 py-2 md:py-3 transition-all duration-1000 ${
-                                    isVisible ? "opacity-100" : "opacity-0"
-                                }`}
+                                className={`flex items-center gap-3 px-4 md:px-6 py-2 md:py-3 transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"
+                                    }`}
                             >
                                 {Icon && <Icon className="text-accent text-lg md:text-xl flex-shrink-0" />}
                                 <span className="text-sm md:text-base font-bold text-foreground/70 hover:text-accent transition-colors duration-300">
-                  {tech.name}
-                </span>
+                                    {tech.name}
+                                </span>
                             </div>
                         )
                     })}

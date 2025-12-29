@@ -1,8 +1,8 @@
 "use client"
 
-import { FaArrowDown, FaEnvelope, FaArrowRight } from "react-icons/fa6"
-import { useEffect, useState } from "react"
 import SectionReveal from "@/components/section-reveal"
+import { useEffect, useState } from "react"
+import { FaArrowDown, FaArrowRight, FaEnvelope } from "react-icons/fa6"
 
 export default function Hero() {
     const [isVisible, setIsVisible] = useState(false)
@@ -61,9 +61,9 @@ export default function Hero() {
                     <div className="space-y-6 md:space-y-8">
                         <div className="space-y-4 md:space-y-6">
                             <SectionReveal as="div" className="inline-block" animation="up" delayMs={100} durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
-                <span className="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-accent/10 dark:bg-accent/15 border border-accent/30 text-accent text-xs md:text-sm font-semibold">
-                  Full-Stack Developer
-                </span>
+                                <span className="px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-accent/10 dark:bg-accent/15 border border-accent/30 text-accent text-xs md:text-sm font-semibold">
+                                    Full-Stack Developer
+                                </span>
                             </SectionReveal>
                             <SectionReveal as="h1" className="text-5xl sm:text-6xl md:text-7xl font-bold leading-tight tracking-tighter" animation="up" delayMs={200} durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
                                 <span className="gradient-text animate-gradient-shift">Jared</span>{" "}
@@ -73,7 +73,7 @@ export default function Hero() {
                                 <div className="h-1 w-20 bg-gradient-to-r from-accent via-accent to-accent/60 rounded-full animate-pulse-slow"></div>
                             </SectionReveal>
                             <SectionReveal as="p" className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto font-light" animation="up" delayMs={400} durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
-                                IT student and freelance full-stack developer, building responsive, beautiful interfaces and reliable backends with exceptional UX, clean code, and scalable APIs.
+                                Full-stack developer specializing in building full-scale websites with responsive, beautiful interfaces and reliable backends. Delivering seamless user experiences through clean architecture and scalable solutions.
                             </SectionReveal>
                         </div>
 
@@ -89,8 +89,8 @@ export default function Hero() {
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                                 <span className="relative flex items-center gap-2 z-10">
                                     <FaEnvelope size={16} className="group-hover:rotate-12 transition-transform duration-300" />
-                  Get In Touch
-                </span>
+                                    Get In Touch
+                                </span>
                             </button>
                             <button
                                 onClick={scrollToProjects}
@@ -100,9 +100,9 @@ export default function Hero() {
                                 {/* Shimmer effect on hover */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-accent/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                                 <span className="flex items-center gap-2 relative z-10">
-                  Explore Work
-                  <FaArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
-                </span>
+                                    Explore Work
+                                    <FaArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                                </span>
                             </button>
                         </SectionReveal>
                     </div>

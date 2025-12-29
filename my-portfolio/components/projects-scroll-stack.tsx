@@ -1,22 +1,35 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { FaArrowPointer } from "react-icons/fa6"
+import { FaArrowPointer, FaGithub } from "react-icons/fa6"
 import ScrollStack, { ScrollStackItem } from "./scroll-stack"
 
 const projects = [
     {
+        title: "Audiora",
+        category: "Personal Project",
+        description:
+            "A free AI-powered music player that acts as your personal DJ, learning from your listening history to create personalized mixes, smart genre blends, and effortless music discovery tailored to your taste.",
+        tech: ["NextJS", "TypeScript", "NestJS", "Audius API", "Redis"],
+        link: "https://audiora-bay.vercel.app/",
+        github: "https://github.com/karl2522/Audiora",
+        image: "/images/audiora-lg.png",
+        domain: "audiora-bay.vercel.app",
+    },
+    {
         title: "Briefly",
+        category: "Personal Project",
         description:
             "A free AI platform for students offering powerful educational tools including study guide generator, smart summarizer, quiz creator, and flashcard generator. Designed to help students learn faster and more effectively—completely free forever.",
-        tech: ["NextJS", "NestJS", "PostgreSQL", "Gemini AI", "Railway"],
+        tech: ["NextJS", "NestJS", "Redis", "Gemini AI", "Railway"],
         link: "https://briefly-liard.vercel.app/",
-        github: "#",
+        github: "https://github.com/karl2522/briefly",
         image: "/images/briefly.png",
         domain: "briefly-liard.vercel.app",
     },
     {
         title: "Studyboost",
+        category: "Professional Work",
         description:
             "An educational startup platform that connects students with study guides, tutors, and academic resources across various universities. Built with modern tech stack for seamless learning experience.",
         tech: ["React", "Java", "Apache POI", "Stripe", "OCR"],
@@ -27,26 +40,29 @@ const projects = [
     },
     {
         title: "Vocalyx",
+        category: "School Project",
         description:
             "A capstone project leveraging speech-to-text technology to streamline grading workflows. Features real-time voice input, Excel integration, and automated grade export for efficient educational assessment.",
         tech: ["React", "Django", "PostgreSQL", "Firebase", "GCP"],
         link: "https://vocalyx.online",
-        github: "#",
+        github: "https://github.com/karl2522/Vocalyx",
         image: "/images/vocalyx.png",
         domain: "vocalyx.online",
     },
     {
         title: "Barangay360",
+        category: "School Project",
         description:
             "A school final project that digitalizes barangay services and community management. Handles announcements, events, emergencies, and streamlines online processing of forms, IDs, clearances, and permits.",
         tech: ["React", "Java", "PostgreSQL", "CSS"],
         link: "https://barangay360.vercel.app",
-        github: "#",
+        github: "https://github.com/karl2522/IT342-G2-Barangay360",
         image: "/images/barangay360.png",
         domain: "barangay360.vercel.app",
     },
     {
         title: "SavorSpace",
+        category: "School Project",
         description:
             "A restaurant management system developed as a school final project. Features responsive frontend design, Java backend architecture with user authentication, comprehensive menu management, and order processing.",
         tech: ["React", "Java", "MySQL", "REST API"],
@@ -65,7 +81,7 @@ export default function ProjectsScrollStack() {
         const checkTheme = () => {
             setIsDark(document.documentElement.classList.contains("dark"))
         }
-        
+
         checkTheme()
 
         // Watch for theme changes
@@ -86,7 +102,7 @@ export default function ProjectsScrollStack() {
         >
             {projects.map((project, index) => {
                 const isLaptopLeft = index % 2 === 0
-                
+
                 // Use theme-specific image for Studyboost
                 const getImageSrc = () => {
                     if (project.title === "Studyboost") {
@@ -141,6 +157,12 @@ export default function ProjectsScrollStack() {
 
                             {/* Content */}
                             <div className={`w-full md:w-1/2 ${isLaptopLeft ? "md:order-2" : "md:order-1"}`}>
+                                {/* Category Badge */}
+                                <div className="mb-3">
+                                    <span className="inline-block text-xs font-semibold px-3 py-1.5 rounded-full bg-accent/10 text-accent border border-accent/20">
+                                        {project.category}
+                                    </span>
+                                </div>
                                 <h3 className="text-2xl md:text-3xl font-bold mb-4 text-foreground">{project.title}</h3>
                                 <p className="text-sm md:text-base text-muted-foreground mb-6 leading-relaxed">{project.description}</p>
 
@@ -168,6 +190,17 @@ export default function ProjectsScrollStack() {
                                             className="animate-click-arrow -rotate-12"
                                         />
                                     </a>
+                                    {project.github !== "#" && (
+                                        <a
+                                            href={project.github}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="group/btn relative inline-flex items-center gap-2 px-6 py-2 border-2 border-accent text-accent text-sm font-semibold rounded-lg transition-all duration-300 hover:bg-accent hover:text-white active:scale-95"
+                                        >
+                                            <FaGithub size={18} />
+                                            <span>GitHub</span>
+                                        </a>
+                                    )}
                                 </div>
                             </div>
                         </div>

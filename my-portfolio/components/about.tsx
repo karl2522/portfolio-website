@@ -5,8 +5,8 @@ import { FaCode, FaGamepad, FaLaptopCode, FaPaintbrush, FaPalette, FaRocket, FaS
 
 const hobbies = [
     {
-        title: "Design Exploration",
-        description: "Diving deep into design trends, UI patterns, and creative tools to stay ahead of the curve.",
+        title: "Exploring AI Integrations",
+        description: "Experimenting with AI technologies to build smarter, more innovative applications.",
         icon: FaPalette,
     },
     {
@@ -46,9 +46,9 @@ export default function About() {
                 <div className="mb-16 md:mb-20">
                     <SectionReveal className="max-w-3xl mx-auto text-center mb-12 md:mb-16" animation="up" durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
                         <p className="text-base sm:text-lg md:text-xl text-muted-foreground leading-relaxed">
-                            I&apos;m a passionate developer and designer focused on creating accessible, pixel-perfect digital experiences.
-                            With full-stack capabilities and a strong design perspective,
-                            I build solutions that unite thoughtful design and solid engineering.
+                            I build innovative software solutions that solve real-world problems.
+                            With full-stack expertise and a passion for modern technologies,
+                            I integrate AI capabilities to create intelligent, scalable applications that make a meaningful impact.
                         </p>
                     </SectionReveal>
 
