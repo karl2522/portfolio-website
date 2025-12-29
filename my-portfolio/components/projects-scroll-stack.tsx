@@ -10,7 +10,7 @@ const projects = [
         category: "Personal Project",
         description:
             "A free AI-powered music player that acts as your personal DJ, learning from your listening history to create personalized mixes, smart genre blends, and effortless music discovery tailored to your taste.",
-        tech: ["NextJS", "TypeScript", "NestJS", "Audius API", "Redis"],
+        tech: ["NextJS", "NestJS", "Shadcn", "Audius API", "Redis"],
         link: "https://audiora-bay.vercel.app/",
         github: "https://github.com/karl2522/Audiora",
         image: "/images/audiora-lg.png",
