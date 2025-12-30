@@ -52,7 +52,7 @@ export default function AnimatedBackground() {
         const checkTheme = () => {
             setIsDark(document.documentElement.classList.contains("dark"))
         }
-        
+
         checkTheme()
 
         // Watch for theme changes
@@ -158,8 +158,8 @@ export default function AnimatedBackground() {
                             background: isDark
                                 ? `radial-gradient(circle, rgba(96, 165, 250, 0.4) 0%, rgba(59, 130, 246, 0.2) 50%, transparent 70%)`
                                 : index % 2 === 0
-                                ? `radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(147, 197, 253, 0.15) 50%, transparent 70%)`
-                                : `radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.1) 50%, transparent 70%)`,
+                                    ? `radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(147, 197, 253, 0.15) 50%, transparent 70%)`
+                                    : `radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.1) 50%, transparent 70%)`,
                             transform: `translate(-50%, -50%)`,
                         }}
                     />
@@ -186,8 +186,8 @@ export default function AnimatedBackground() {
                                     ? `radial-gradient(ellipse, rgba(59, 130, 246, 0.2) 0%, rgba(96, 165, 250, 0.1) 40%, transparent 70%)`
                                     : `radial-gradient(ellipse, rgba(139, 92, 246, 0.18) 0%, rgba(167, 139, 250, 0.08) 40%, transparent 70%)`
                                 : index % 2 === 0
-                                ? `radial-gradient(ellipse, rgba(59, 130, 246, 0.15) 0%, rgba(147, 197, 253, 0.08) 40%, transparent 70%)`
-                                : `radial-gradient(ellipse, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.06) 40%, transparent 70%)`,
+                                    ? `radial-gradient(ellipse, rgba(59, 130, 246, 0.15) 0%, rgba(147, 197, 253, 0.08) 40%, transparent 70%)`
+                                    : `radial-gradient(ellipse, rgba(99, 102, 241, 0.12) 0%, rgba(139, 92, 246, 0.06) 40%, transparent 70%)`,
                         }}
                     />
                 ))}
@@ -272,37 +272,33 @@ export default function AnimatedBackground() {
                     }}
                 >
                     {star.type === "dot" && (
-                        <div className={`w-full h-full rounded-full blur-[0.5px] ${
-                            isDark 
-                                ? "bg-gradient-to-br from-accent/80 to-accent/30 shadow-lg shadow-accent/30" 
+                        <div className={`w-full h-full rounded-full blur-[0.5px] ${isDark
+                                ? "bg-gradient-to-br from-accent/80 to-accent/30 shadow-lg shadow-accent/30"
                                 : "bg-gradient-to-br from-accent/60 to-accent/40 shadow-md shadow-accent/20"
-                        }`} />
+                            }`} />
                     )}
                     {star.type === "twinkle" && (
-                        <div className={`w-full h-full rounded-full shadow-lg ${
-                            isDark 
-                                ? "bg-accent/70 shadow-accent/50" 
+                        <div className={`w-full h-full rounded-full shadow-lg ${isDark
+                                ? "bg-accent/70 shadow-accent/50"
                                 : "bg-accent/50 shadow-accent/30"
-                        }`} />
+                            }`} />
                     )}
                     {star.type === "cross" && (
                         <div className="w-full h-full flex items-center justify-center">
-                            <div className={`w-[1px] h-full bg-gradient-to-b from-transparent ${
-                                isDark ? "via-accent/70" : "via-accent/50"
-                            } to-transparent`} />
-                            <div className={`w-full h-[1px] absolute bg-gradient-to-r from-transparent ${
-                                isDark ? "via-accent/70" : "via-accent/50"
-                            } to-transparent`} />
+                            <div className={`w-[1px] h-full bg-gradient-to-b from-transparent ${isDark ? "via-accent/70" : "via-accent/50"
+                                } to-transparent`} />
+                            <div className={`w-full h-[1px] absolute bg-gradient-to-r from-transparent ${isDark ? "via-accent/70" : "via-accent/50"
+                                } to-transparent`} />
                         </div>
                     )}
                 </div>
             ))}
 
             {/* Flowing Gradient Overlay */}
-            <div 
+            <div
                 className="absolute inset-0 opacity-40 dark:opacity-15"
                 style={{
-                    background: isDark
+                    backgroundImage: isDark
                         ? `radial-gradient(ellipse at 20% 30%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
                            radial-gradient(ellipse at 80% 70%, rgba(139, 92, 246, 0.15) 0%, transparent 50%)`
                         : `radial-gradient(ellipse at 20% 30%, rgba(59, 130, 246, 0.25) 0%, transparent 50%),

@@ -6,6 +6,17 @@ import ScrollStack, { ScrollStackItem } from "./scroll-stack"
 
 const projects = [
     {
+        title: "SwiftShip",
+        category: "Personal Project",
+        description:
+            "A modern, static landing page for a fictional logistics and shipping company, built with a focus on exceptional UI/UX design and smooth animations.",
+        tech: ["NextJS", "TypeScript", "TailwindCSS", "Shadcn", "Vercel"],
+        link: "https://swift-ship-bay.vercel.app",
+        github: "#",
+        image: "/images/swiftship.png",
+        domain: "swift-ship-bay.vercel.app",
+    },
+    {
         title: "Audiora",
         category: "Personal Project",
         description:
