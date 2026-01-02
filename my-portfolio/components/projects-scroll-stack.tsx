@@ -6,6 +6,17 @@ import ScrollStack, { ScrollStackItem } from "./scroll-stack"
 
 const projects = [
     {
+        title: "ChainProof",
+        category: "Personal Project",
+        description:
+            "ChainProof is a decentralized application that leverages blockchain technology to provide cryptographic proof of file authenticity and integrity.",
+        tech: ["NextJS", "NestJS", "Shadcn", "EtherJS", "Hardhat"],
+        link: "https://chain-proof-red.vercel.app/",
+        github: "#",
+        image: "/images/chainproof.png",
+        domain: "chain-proof-red.vercel.app",
+    },
+    {
         title: "SwiftShip",
         category: "Personal Project",
         description:
