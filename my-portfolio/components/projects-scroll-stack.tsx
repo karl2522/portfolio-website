@@ -41,6 +41,39 @@ const projects = [
         },
     },
     {
+        title: "WealthOS",
+        category: "Personal Project",
+        type: "Systems & SaaS Projects",
+        description:
+            "WealthOS is a comprehensive personal finance and wealth management platform designed to give you a clear, real-time overview of your financial health. It provides tools for tracking assets, analyzing portfolio performance, and managing holdings across various asset classes.",
+        tech: ["NextJS", "NestJS", "Shadcn", "Redis"],
+        link: "https://wealth-os-red.vercel.app/",
+        github: "https://github.com/karl2522/WealthOS.git",
+        image: "/images/wealthos.png",
+        domain: "wealth-os-red.vercel.app",
+        caseStudy: {
+            overview: "A modern investment and savings dashboard designed to provide a unified view of your financial health across various asset classes.",
+            problem: "Investors often have assets scattered across different platforms (brokerages, crypto wallets, bank accounts), making it difficult to visualize total net worth and performance in one place.",
+            goal: "To build a professional-grade, centralized dashboard that aggregates financial data to provide real-time insights and long-term analytics.",
+            solution: "I developed a full-stack monorepo application using Next.js 16 and NestJS 11, implementing robust data modeling with Prisma and high-performance caching with Redis.",
+            features: [
+                "Real-time Net Worth Tracking",
+                "Start/End of Day Performance",
+                "Asset Allocation Visualization",
+                "Multi-asset Support (Stocks, Crypto)",
+            ],
+            tech: {
+                Frontend: "Next.js 16 / Shadcn / Recharts",
+                Backend: "NestJS 11 / Prisma",
+                Database: "PostgreSQL / Redis",
+                Auth: "JWT / Passport.js",
+            },
+            challenges: "Handling real-time calculations for portfolio performance was computationally expensive. I implemented Redis caching to store aggregated metrics and ensure instant dashboard loading.",
+            outcome: "The result is a highly responsive, secure fintech application that simplifies wealth tracking for users.",
+            demonstrates: ["Monorepo Architecture", "Financial Data Modeling", "Redis Caching Strategies", "Interactive Data Vis"],
+        },
+    },
+    {
         title: "ChainProof",
         category: "Personal Project",
         type: "Concepts & Experiments",
@@ -266,9 +299,9 @@ export default function ProjectsScrollStack() {
 
     return (
         <ScrollStack
-            stickyOffset={280}
+            stickyOffset={250}
             anchorSelector='[data-stack-anchor="projects"]'
-            itemDistance={120}
+            itemDistance={200}
         >
             {projects.map((project, index) => {
                 const isLaptopLeft = index % 2 === 0
@@ -308,7 +341,7 @@ export default function ProjectsScrollStack() {
                                                     </div>
                                                 </div>
                                                 {/* Screen Content - Project Image */}
-                                                <div className="aspect-video bg-white dark:bg-gray-800 overflow-hidden flex items-center justify-center">
+                                                <div className="relative aspect-video bg-white dark:bg-gray-800 overflow-hidden">
                                                     <Image
                                                         src={getImageSrc()}
                                                         alt={project.title}
@@ -390,98 +423,109 @@ export default function ProjectsScrollStack() {
                                 {project.caseStudy && (
                                     <Dialog.Root>
                                         <Dialog.Trigger asChild>
-                                            <button className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors mt-6 group">
+                                            <button className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-accent transition-colors mt-4 group">
                                                 <FaBookOpen className="group-hover:scale-110 transition-transform" />
                                                 <span>Read Case Study</span>
                                             </button>
                                         </Dialog.Trigger>
                                         <Dialog.Portal>
                                             <Dialog.Overlay className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
-                                            <Dialog.Content className="fixed left-[50%] top-[50%] z-50 grid w-full max-w-4xl translate-x-[-50%] translate-y-[-50%] gap-4 border bg-background p-0 shadow-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-xl md:w-full max-h-[90vh] overflow-hidden flex flex-col">
-                                                {/* Header */}
-                                                <div className="p-6 border-b border-border flex items-center justify-between sticky top-0 bg-background/95 backdrop-blur z-10">
-                                                    <div>
-                                                        <div className="flex items-center gap-3 mb-2">
-                                                            <span className="text-xs font-semibold px-2 py-1 rounded bg-accent/10 text-accent uppercase tracking-wider">
-                                                                Case Study
-                                                            </span>
-                                                            <span className="text-sm text-muted-foreground">{project.title}</span>
-                                                        </div>
-                                                        <h2 className="text-2xl font-bold">{project.caseStudy.goal}</h2>
+                                            <Dialog.Content className="fixed left-[50%] top-[50%] z-50 w-[90vw] max-w-2xl translate-x-[-50%] translate-y-[-50%] gap-0 border border-border bg-background shadow-lg rounded-lg duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 sm:rounded-lg md:w-full max-h-[85vh] overflow-hidden flex flex-col">
+
+                                                {/* Compact Header */}
+                                                <div className="p-4 border-b border-border flex items-start justify-between sticky top-0 bg-background/95 backdrop-blur z-10">
+                                                    <div className="flex-1 pr-4">
+          <span className="inline-block text-[10px] font-semibold px-1.5 py-0.5 rounded bg-accent/10 text-accent uppercase tracking-wider mb-2">
+            Case Study
+          </span>
+                                                        <h2 className="text-lg font-bold leading-snug">{project.caseStudy.goal}</h2>
                                                     </div>
-                                                    <Dialog.Close className="rounded-full p-2 hover:bg-accent/10 transition-colors text-muted-foreground hover:text-accent">
-                                                        <FaXmark size={20} />
+                                                    <Dialog.Close className="rounded-full p-1.5 hover:bg-accent/10 transition-colors text-muted-foreground hover:text-accent flex-shrink-0">
+                                                        <FaXmark size={16} />
                                                         <span className="sr-only">Close</span>
                                                     </Dialog.Close>
                                                 </div>
 
-                                                {/* Scrollable Content */}
-                                                <div className="p-6 overflow-y-auto custom-scrollbar">
-                                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                                                        {/* Sidebar / Meta */}
-                                                        <div className="md:col-span-1 space-y-8">
-                                                            <div>
-                                                                <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">Project Overview</h4>
-                                                                <p className="text-sm leading-relaxed">{project.caseStudy.overview}</p>
+                                                {/* Scrollable Content - Compact */}
+                                                <div className="overflow-y-auto flex-1">
+                                                    <div className="p-4 space-y-4">
+
+                                                        {/* Problem & Solution - Priority Focus */}
+                                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                            <div className="bg-accent/5 p-3 rounded border border-accent/20">
+                                                                <h4 className="text-xs font-bold text-accent uppercase tracking-wide mb-2">Problem</h4>
+                                                                <p className="text-xs leading-relaxed text-muted-foreground">
+                                                                    {project.caseStudy.problem}
+                                                                </p>
                                                             </div>
-                                                            <div>
-                                                                <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">Tech Stack Strategy</h4>
-                                                                <div className="space-y-3">
-                                                                    {Object.entries(project.caseStudy.tech).map(([key, value]) => (
-                                                                        <div key={key}>
-                                                                            <div className="text-[10px] text-muted-foreground uppercase">{key}</div>
-                                                                            <div className="font-medium text-sm">{value}</div>
-                                                                        </div>
-                                                                    ))}
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <h4 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-3">What This Demonstrates</h4>
-                                                                <div className="flex flex-wrap gap-2">
-                                                                    {project.caseStudy.demonstrates.map((item, i) => (
-                                                                        <span key={i} className="px-2 py-1 rounded border border-border text-[10px] bg-secondary/50">
-                                                                            {item}
-                                                                        </span>
-                                                                    ))}
-                                                                </div>
+                                                            <div className="bg-green-500/5 p-3 rounded border border-green-500/20">
+                                                                <h4 className="text-xs font-bold text-green-500 uppercase tracking-wide mb-2">Solution</h4>
+                                                                <p className="text-xs leading-relaxed text-muted-foreground">
+                                                                    {project.caseStudy.solution}
+                                                                </p>
                                                             </div>
                                                         </div>
 
-                                                        {/* Main Content */}
-                                                        <div className="md:col-span-2 space-y-8">
-                                                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                                                <div className="bg-accent/5 p-4 rounded-lg border border-accent/10">
-                                                                    <h4 className="text-xs font-bold text-accent uppercase tracking-wider mb-2">The Problem</h4>
-                                                                    <p className="text-sm text-muted-foreground">{project.caseStudy.problem}</p>
-                                                                </div>
-                                                                <div className="bg-green-500/5 p-4 rounded-lg border border-green-500/10">
-                                                                    <h4 className="text-xs font-bold text-green-500 uppercase tracking-wider mb-2">The Solution</h4>
-                                                                    <p className="text-sm text-muted-foreground">{project.caseStudy.solution}</p>
-                                                                </div>
-                                                            </div>
+                                                        {/* Overview */}
+                                                        <div>
+                                                            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wide mb-2">Overview</h3>
+                                                            <p className="text-xs leading-relaxed text-foreground">{project.caseStudy.overview}</p>
+                                                        </div>
 
-                                                            <div>
-                                                                <h4 className="text-sm font-bold text-foreground uppercase tracking-wider mb-3">Key Features</h4>
-                                                                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                                                    {project.caseStudy.features.map((feature, i) => (
-                                                                        <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
-                                                                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0" />
-                                                                            <span>{feature}</span>
-                                                                        </li>
-                                                                    ))}
-                                                                </ul>
-                                                            </div>
+                                                        {/* Key Features */}
+                                                        <div>
+                                                            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wide mb-2">Features</h3>
+                                                            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                                                                {project.caseStudy.features.map((feature, i) => (
+                                                                    <li key={i} className="flex items-start gap-1.5 text-xs text-foreground">
+                                                                        <span className="mt-1 w-1 h-1 rounded-full bg-accent flex-shrink-0" />
+                                                                        <span>{feature}</span>
+                                                                    </li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
 
-                                                            <div className="space-y-4">
-                                                                <h4 className="text-sm font-bold text-foreground uppercase tracking-wider">Challenges & Decisions</h4>
-                                                                <p className="text-muted-foreground leading-relaxed">{project.caseStudy.challenges}</p>
-                                                            </div>
-
-                                                            <div className="space-y-4">
-                                                                <h4 className="text-sm font-bold text-foreground uppercase tracking-wider">Outcome & Status</h4>
-                                                                <p className="text-muted-foreground leading-relaxed">{project.caseStudy.outcome}</p>
+                                                        {/* Tech Stack - Compact */}
+                                                        <div>
+                                                            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wide mb-2">Tech Stack</h3>
+                                                            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                                                {Object.entries(project.caseStudy.tech).map(([key, value]) => (
+                                                                    <div key={key} className="bg-secondary/40 p-2 rounded border border-border">
+                                                                        <div className="text-[9px] text-muted-foreground uppercase tracking-wider mb-1">{key}</div>
+                                                                        <div className="font-medium text-[11px] text-foreground line-clamp-2">{value}</div>
+                                                                    </div>
+                                                                ))}
                                                             </div>
                                                         </div>
+
+                                                        {/* Challenges */}
+                                                        <div>
+                                                            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wide mb-2">Challenges</h3>
+                                                            <p className="text-xs leading-relaxed text-muted-foreground">
+                                                                {project.caseStudy.challenges}
+                                                            </p>
+                                                        </div>
+
+                                                        {/* Outcome */}
+                                                        <div className="bg-green-500/5 p-3 rounded border border-green-500/20">
+                                                            <h3 className="text-xs font-bold text-green-500 uppercase tracking-wide mb-2">Outcome</h3>
+                                                            <p className="text-xs leading-relaxed text-muted-foreground">
+                                                                {project.caseStudy.outcome}
+                                                            </p>
+                                                        </div>
+
+                                                        {/* Demonstrates */}
+                                                        <div>
+                                                            <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wide mb-2">Demonstrates</h3>
+                                                            <div className="flex flex-wrap gap-1.5">
+                                                                {project.caseStudy.demonstrates.map((item, i) => (
+                                                                    <span key={i} className="px-2 py-1 rounded border border-border text-[10px] bg-secondary/40 text-foreground">
+                  {item}
+                </span>
+                                                                ))}
+                                                            </div>
+                                                        </div>
+
                                                     </div>
                                                 </div>
                                             </Dialog.Content>

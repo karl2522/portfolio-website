@@ -31,7 +31,7 @@ export const ScrollStackItem = ({ children, className, cardClassName, index = 0,
     }, [index, isLast])
 
     return (
-        <div 
+        <div
             className={cx("scroll-stack-item", isLast && "scroll-stack-item-last", className)}
             style={itemStyle}
         >
@@ -125,7 +125,7 @@ const ScrollStack = ({
         // 1. Sticky cards can remain sticky at their positions
         // 2. Last card can scroll from its position, OVER the sticky cards, and out of viewport
         // 3. The section doesn't end until last card is completely gone
-        
+
         // Minimal calculation - just add a tiny amount for last card to scroll over sticky cards
         const maxHeight = baseHeight + viewportHeight * 0.12
 

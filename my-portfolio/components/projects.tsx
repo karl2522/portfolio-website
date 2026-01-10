@@ -4,44 +4,6 @@ import { useInView } from "@/hooks/use-in-view"
 import { useEffect, useRef, useState } from "react"
 import ProjectsScrollStack from "./projects-scroll-stack"
 
-const projects = [
-    {
-        title: "Studyboost",
-        description:
-            "An educational startup platform that connects students with study guides, tutors, and academic resources across various universities. Built with modern tech stack for seamless learning experience.",
-        tech: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-        link: "#",
-        github: "#",
-        image: "/images/studyboost.png",
-    },
-    {
-        title: "Vocalyx",
-        description:
-            "A capstone project leveraging speech-to-text technology to streamline grading workflows. Features real-time voice input, Excel integration, and automated grade export for efficient educational assessment.",
-        tech: ["Python", "Flask", "React", "Speech Recognition"],
-        link: "#",
-        github: "#",
-        image: "/images/vocalyx.png",
-    },
-    {
-        title: "Barangay360",
-        description:
-            "A school final project that digitalizes barangay services and community management. Handles announcements, events, emergencies, and streamlines online processing of forms, IDs, clearances, and permits.",
-        tech: ["React", "Node.js", "MongoDB", "Firebase"],
-        link: "#",
-        github: "#",
-        image: "/images/barangay360.png",
-    },
-    {
-        title: "SavorSpace",
-        description:
-            "A restaurant management system developed as a school final project. Features responsive frontend design, Java backend architecture with user authentication, comprehensive menu management, and order processing.",
-        tech: ["React", "Java", "MySQL", "REST API"],
-        link: "#",
-        github: "#",
-        image: "/images/savorspace.png",
-    },
-]
 
 export default function Projects() {
     const { ref: sectionRef, inView } = useInView({ threshold: 0.2, once: true })
@@ -73,7 +35,7 @@ export default function Projects() {
             <div className="max-w-6xl mx-auto">
                 <div
                     ref={headerRef}
-                    className="sticky top-20 z-30 mb-12 md:mb-16 py-6"
+                    className="z-30 mb-12 md:mb-16 py-6"
                     data-stack-anchor="projects"
                 >
                     <div className="text-center">
