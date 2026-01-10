@@ -1,6 +1,7 @@
 "use client"
 
 import SectionReveal from "@/components/section-reveal"
+import Image from "next/image"
 import { useEffect, useState } from "react"
 import { FaArrowDown, FaArrowRight, FaEnvelope } from "react-icons/fa6"
 
@@ -45,10 +46,12 @@ export default function Hero() {
                     <SectionReveal animation="up" durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
                         <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-accent/30 dark:border-accent/25 shadow-2xl shadow-accent/20 group animate-float">
                             <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-accent/5 dark:from-accent/20 dark:to-accent/10"></div>
-                            <img
+                            <Image
                                 src="/images/omenPlain.png"
                                 alt="Jared Karl Omen"
-                                className="w-full h-full object-cover opacity-95 transition-transform duration-500 group-hover:scale-110"
+                                fill
+                                className="object-cover opacity-95 transition-transform duration-500 group-hover:scale-110"
+                                priority
                             />
                             {/* Animated glow border */}
                             <div className="absolute inset-0 rounded-full border-2 border-transparent bg-gradient-to-r from-accent/30 via-transparent to-accent/20 pointer-events-none animate-glow"></div>

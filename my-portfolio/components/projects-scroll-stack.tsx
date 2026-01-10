@@ -1,6 +1,7 @@
 "use client"
 
 import * as Dialog from "@radix-ui/react-dialog"
+import Image from "next/image"
 import { useEffect, useState } from "react"
 import { FaArrowPointer, FaBookOpen, FaGithub, FaXmark } from "react-icons/fa6"
 import ScrollStack, { ScrollStackItem } from "./scroll-stack"
@@ -308,10 +309,12 @@ export default function ProjectsScrollStack() {
                                                 </div>
                                                 {/* Screen Content - Project Image */}
                                                 <div className="aspect-video bg-white dark:bg-gray-800 overflow-hidden flex items-center justify-center">
-                                                    <img
+                                                    <Image
                                                         src={getImageSrc()}
                                                         alt={project.title}
-                                                        className="w-full h-full object-contain"
+                                                        fill
+                                                        className="object-contain"
+                                                        sizes="(max-width: 768px) 100vw, 50vw"
                                                     />
                                                 </div>
                                             </div>
