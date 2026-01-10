@@ -73,14 +73,14 @@ export default function Hero() {
                                 <div className="h-1 w-20 bg-gradient-to-r from-accent via-accent to-accent/60 rounded-full animate-pulse-slow"></div>
                             </SectionReveal>
                             <SectionReveal as="p" className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto font-light" animation="up" delayMs={400} durationMs={800} inViewOptions={{ threshold: 0.2, once: true }}>
-                                Full-stack developer specializing in building full-scale websites with responsive, beautiful interfaces and reliable backends. Delivering seamless user experiences through clean architecture and scalable solutions.
+                                I build professional websites, SaaS products, and business-grade systems designed to support growth, automate workflows, and launch digital products faster.
                             </SectionReveal>
                         </div>
 
                         <SectionReveal className="flex flex-wrap items-center justify-center gap-3 md:gap-4 pt-4 md:pt-6" animation="up" delayMs={500} durationMs={800} inViewOptions={{ threshold: 0.2, once: true }} staggerChildren staggerStepMs={80}>
                             <button
                                 onClick={() => {
-                                    window.location.href = "mailto:hello@jaredomen.com"
+                                    window.open("https://calendly.com/joredomen/30min", "_blank")
                                 }}
                                 className="group relative px-6 md:px-8 py-2.5 md:py-3 bg-gradient-to-r from-accent to-accent/80 text-white rounded-lg font-semibold overflow-hidden transition-all duration-300 active:scale-95 text-sm md:text-base cursor-pointer flex items-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/30"
                                 style={{ ["--stagger-index" as any]: 0 }}
@@ -89,7 +89,7 @@ export default function Hero() {
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
                                 <span className="relative flex items-center gap-2 z-10">
                                     <FaEnvelope size={16} className="group-hover:rotate-12 transition-transform duration-300" />
-                                    Get In Touch
+                                    Book a Call
                                 </span>
                             </button>
                             <button
