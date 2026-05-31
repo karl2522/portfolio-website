@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { FaReact, FaGit, FaFigma } from "react-icons/fa6"
 import { FaJava } from "react-icons/fa"
-import { SiTypescript, SiTailwindcss, SiNextdotjs, SiVite, SiSpring, SiRadixui, SiDjango, SiHtml5, SiCss3, SiJavascript, SiPython, SiNodedotjs } from "react-icons/si"
+import { SiTypescript, SiTailwindcss, SiNextdotjs, SiVite, SiSpring, SiSupabase, SiDjango, SiHtml5, SiCss3, SiJavascript, SiPython, SiNodedotjs } from "react-icons/si"
 import SectionReveal from "@/components/section-reveal"
 import { useInView } from "@/hooks/use-in-view"
 
@@ -24,7 +24,7 @@ const technologies = [
     { name: "Git", icon: FaGit, color: "#f1502f" },
     { name: "Figma", icon: FaFigma, color: "#f24e1e" },
     { name: "Spring Boot ", icon: SiSpring, color: "#6db33f" },
-    { name: "Radix UI", icon: SiRadixui, color: "#0066ff" },
+    { name: "Supabase", icon: SiSupabase, color: "#3ecf8e" },
     { name: "Django", icon: SiDjango, color: "#092e20" },
 ]
 

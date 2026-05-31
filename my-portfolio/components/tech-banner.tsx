@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { FaGit, FaReact } from "react-icons/fa6"
-import { SiDjango, SiNextdotjs, SiRadixui, SiRedis, SiTailwindcss, SiTypescript } from "react-icons/si"
+import { SiDjango, SiNextdotjs, SiRedis, SiSupabase, SiTailwindcss, SiTypescript } from "react-icons/si"
 
 const techItems = [
     { name: "NEXTJS", icon: SiNextdotjs },
@@ -12,7 +12,7 @@ const techItems = [
     { name: "DJANGO", icon: SiDjango },
     { name: "GITHUB", icon: FaGit },
     { name: "REACT", icon: FaReact },
-    { name: "RADIX UI", icon: SiRadixui },
+    { name: "SUPABASE", icon: SiSupabase },
 ]
 
 export default function TechBanner() {
