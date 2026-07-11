@@ -22,6 +22,12 @@ out/
 .env.local
 .env.*.local
 
+# MCP server config - may hold API tokens
+.mcp.json
+
+# Playwright MCP session artifacts
+.playwright-mcp/
+
 # OS
 .DS_Store
 Thumbs.db
