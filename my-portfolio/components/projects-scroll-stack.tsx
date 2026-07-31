@@ -8,6 +8,18 @@ import ScrollStack, { ScrollStackItem } from "./scroll-stack"
 
 const projects = [
     {
+        title: "Rally House",
+        category: "Professional Work",
+        type: "UI & Frontend Explorations",
+        description:
+            "A bold, high-contrast landing page for Rally House, an independent pickleball venue in Cebu. Built around a full-bleed hero, oversized display typography, and smooth scroll-driven sections covering play, rates, facility details, and court booking.",
+        tech: ["NextJS", "TypeScript", "TailwindCSS", "Framer Motion"],
+        link: "https://rally-house-pickleball-demo.joredomen.chatgpt.site/",
+        github: "#",
+        image: "/images/rallyhouse.png",
+        domain: "rally-house-pickleball-demo.joredomen.chatgpt.site",
+    },
+    {
         title: "Aiva",
         category: "Personal Project",
         type: "Systems & SaaS Projects",
