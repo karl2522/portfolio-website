@@ -47,10 +47,10 @@ export default function Hero() {
                         <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-accent/30 dark:border-accent/25 shadow-2xl shadow-accent/20 group animate-float">
                             <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-accent/5 dark:from-accent/20 dark:to-accent/10"></div>
                             <Image
-                                src="/images/omenPlain.png"
+                                src="/images/omen-grad.jpg"
                                 alt="Jared Karl Omen"
                                 fill
-                                className="object-cover opacity-95 transition-transform duration-500 group-hover:scale-110"
+                                className="object-cover scale-125 opacity-95 transition-transform duration-500 group-hover:scale-[1.375]"
                                 priority
                             />
                             {/* Animated glow border */}
