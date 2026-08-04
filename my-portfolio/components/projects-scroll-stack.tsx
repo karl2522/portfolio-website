@@ -8,6 +8,18 @@ import ScrollStack, { ScrollStackItem } from "./scroll-stack"
 
 const projects = [
     {
+        title: "Rally Shop",
+        category: "Personal Project",
+        type: "UI & Frontend Explorations",
+        description:
+            "A polished pickleball storefront concept featuring product filtering, a paddle finder, quick views, and a simulated shopping cart.",
+        tech: ["HTML", "CSS", "JavaScript"],
+        link: "https://rally-shop.jaredomen.com/",
+        github: "#",
+        image: "/images/rallyshop.png",
+        domain: "rally-shop.jaredomen.com",
+    },
+    {
         title: "Rally House",
         category: "Professional Work",
         type: "UI & Frontend Explorations",
