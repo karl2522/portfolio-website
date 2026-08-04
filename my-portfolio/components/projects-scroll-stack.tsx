@@ -21,10 +21,10 @@ const projects = [
     },
     {
         title: "Rally House",
-        category: "Professional Work",
+        category: "Personal Project",
         type: "UI & Frontend Explorations",
         description:
-            "A bold, high-contrast landing page for Rally House, an independent pickleball venue in Cebu. Built around a full-bleed hero, oversized display typography, and smooth scroll-driven sections covering play, rates, facility details, and court booking.",
+            "A bold, high-contrast concept for a modern pickleball venue in Cebu. The landing page explores a full-bleed hero, oversized display typography, and smooth scroll-driven sections for play, rates, facilities, and court booking.",
         tech: ["NextJS", "TypeScript", "TailwindCSS", "Framer Motion"],
         link: "https://rally-house.jaredomen.com/",
         github: "#",
