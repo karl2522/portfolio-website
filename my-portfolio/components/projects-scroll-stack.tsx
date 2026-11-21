@@ -6,7 +6,86 @@ import { useEffect, useState } from "react"
 import { FaArrowPointer, FaBookOpen, FaGithub, FaXmark } from "react-icons/fa6"
 import ScrollStack, { ScrollStackItem } from "./scroll-stack"
 
+// Outer phone frame ratio, sized so the screen inside keeps the screenshots' 1170 × 2553 shape.
+const PHONE_ASPECT = "1000 / 2106"
+
+function PhoneFrame({ src, alt, className = "", sizes, priority = false }: { src: string; alt: string; className?: string; sizes: string; priority?: boolean }) {
+    return (
+        <div
+            className={`rounded-[16%/7.6%] bg-neutral-950 p-[3.2%] shadow-2xl shadow-black/40 ring-1 ring-black/10 dark:ring-white/10 ${className}`}
+            style={{ aspectRatio: PHONE_ASPECT }}
+        >
+            <div className="relative h-full w-full overflow-hidden rounded-[13%/6%] bg-[#0e1b1e]">
+                <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" />
+            </div>
+        </div>
+    )
+}
+
+function PhoneShowcase({ screens, title }: { screens: { src: string; alt: string }[]; title: string }) {
+    const [front, left, right] = screens
+    return (
+        <div className="relative flex h-[280px] sm:h-[340px] lg:h-[380px] w-full items-center justify-center">
+            <div aria-hidden className="absolute inset-x-[12%] inset-y-[10%] rounded-full bg-accent/20 blur-3xl" />
+            <PhoneFrame
+                src={left.src}
+                alt={`${title}: ${left.alt}`}
+                sizes="(max-width: 768px) 30vw, 15vw"
+                className="absolute h-[84%] -translate-x-[62%] translate-y-[4%] -rotate-[7deg] motion-safe:transition-transform motion-safe:duration-500 group-hover:-translate-x-[70%] group-hover:-rotate-[9deg]"
+            />
+            <PhoneFrame
+                src={right.src}
+                alt={`${title}: ${right.alt}`}
+                sizes="(max-width: 768px) 30vw, 15vw"
+                className="absolute h-[84%] translate-x-[62%] translate-y-[4%] rotate-[7deg] motion-safe:transition-transform motion-safe:duration-500 group-hover:translate-x-[70%] group-hover:rotate-[9deg]"
+            />
+            <PhoneFrame src={front.src} alt={`${title}: ${front.alt}`} sizes="(max-width: 768px) 40vw, 20vw" className="relative z-10 h-full" />
+        </div>
+    )
+}
+
 const projects = [
+    {
+        title: "Sulti",
+        category: "Personal Project",
+        type: "Systems & SaaS Projects",
+        description:
+            "A voice-first iPhone remote for Codex coding sessions on a Windows PC. It reads finished answers aloud, sends what you dictate to the right project, and puts approvals one tap away, so work keeps moving when you step away from the keyboard.",
+        tech: ["TypeScript", "React", "Node.js", "WebSockets", "PWA"],
+        link: "#",
+        github: "https://github.com/karl2522/sulti",
+        image: "/images/sulti-home.webp",
+        domain: "trysulti.jaredomen.com",
+        screens: [
+            { src: "/images/sulti-home.webp", alt: "Sessions across four projects, one waiting for approval" },
+            { src: "/images/sulti-reader.webp", alt: "An answer being read aloud with the current sentence highlighted" },
+            { src: "/images/sulti-talk.webp", alt: "A dictated request with a preview of what will be sent" },
+            { src: "/images/sulti-approval.webp", alt: "A tap-only approval for a command outside the sandbox" },
+        ],
+        caseStudy: {
+            overview: "Sulti (Cebuano for “speak”) turns an iPhone into a voice remote for Codex. A small companion on the PC drives the Codex app server and serves a home-screen web app that listens, talks, and approves.",
+            problem: "Coding agents finish long answers and stop for approvals while you are away from the desk. Keeping up meant walking back to the keyboard, and reading dense technical answers on a phone screen is slow.",
+            goal: "To follow and steer several Codex sessions by voice from a phone, without giving the phone any power Codex doesn't already ask for.",
+            solution: "A Node.js companion drives the Codex app server over JSON-RPC and also collects answers from open terminals through a Stop hook. A React PWA reaches it through a Cloudflare Tunnel, routes dictation to prompts, skills, goals, or session switches, and plays answers with the phone's voice or as PC-rendered audio.",
+            features: [
+                "Answers read aloud, with lock-screen and AirPods controls",
+                "Dictation routed to the right project session",
+                "Skills, goals, and slash commands from the phone",
+                "Tap-only approvals for commands outside the sandbox",
+                "Live status for every session and terminal",
+                "One-time pairing and signed, expiring audio links",
+            ],
+            tech: {
+                Phone: "React 19 / Vite PWA",
+                Companion: "Node.js / WebSockets",
+                Agent: "Codex app-server / JSON-RPC",
+                Access: "Cloudflare Tunnel",
+            },
+            challenges: "Voice is ambiguous and the stakes are real. The intent router fuzzy-matches project and skill names, shows how it understood you before anything is sent, and asks when it isn't sure. Approvals take a tap and never a spoken word, every listener binds to localhost behind paired-device auth, and audio is served only through signed URLs that expire.",
+            outcome: "Sulti runs as an installed home-screen app against a live companion, backed by unit and integration tests, an end-to-end walkthrough of every phone flow in Chromium and WebKit, and Windows CI on every commit.",
+            demonstrates: ["Voice-first UX", "Agent protocol integration", "Real-time WebSocket systems", "Security-minded design", "Progressive web apps"],
+        },
+    },
     {
         title: "Rally Shop",
         category: "Personal Project",
@@ -379,8 +458,11 @@ export default function ProjectsScrollStack() {
                         cardClassName="group relative p-6 md:p-8 rounded-lg md:rounded-xl bg-card border border-border backdrop-blur-sm w-full"
                     >
                         <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-center">
-                            {/* Laptop Mockup */}
+                            {/* Phone apps get a three-phone showcase; everything else the laptop mockup */}
                             <div className={`w-full md:w-1/2 ${isLaptopLeft ? "md:order-1" : "md:order-2"}`}>
+                                {project.screens ? (
+                                    <PhoneShowcase screens={project.screens} title={project.title} />
+                                ) : (
                                 <div className="relative">
                                     {/* Laptop Base */}
                                     <div className="relative bg-gray-800 rounded-lg md:rounded-xl p-2 md:p-3 shadow-2xl">
@@ -417,6 +499,7 @@ export default function ProjectsScrollStack() {
                                         </div>
                                     </div>
                                 </div>
+                                )}
                             </div>
 
                             {/* Content */}
@@ -454,6 +537,7 @@ export default function ProjectsScrollStack() {
                                 </div>
 
                                 <div className="flex gap-4">
+                                    {project.link !== "#" && (
                                     <a
                                         href={project.link}
                                         target="_blank"
@@ -466,12 +550,16 @@ export default function ProjectsScrollStack() {
                                             className="animate-click-arrow -rotate-12"
                                         />
                                     </a>
+                                    )}
                                     {project.github !== "#" && (
                                         <a
                                             href={project.github}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="group/btn relative inline-flex items-center gap-2 px-6 py-2 border-2 border-accent text-accent text-sm font-semibold rounded-lg transition-all duration-300 hover:bg-accent hover:text-white active:scale-95"
+                                            className={`group/btn relative inline-flex items-center gap-2 px-6 py-2 text-sm font-semibold rounded-lg transition-all duration-300 active:scale-95 ${project.link === "#"
+                                                ? "bg-accent text-white hover:bg-blue-600 dark:hover:bg-accent/80"
+                                                : "border-2 border-accent text-accent hover:bg-accent hover:text-white"
+                                                }`}
                                         >
                                             <FaGithub size={18} />
                                             <span>GitHub</span>
@@ -508,6 +596,21 @@ export default function ProjectsScrollStack() {
                                                 {/* Scrollable Content - Compact */}
                                                 <div className="overflow-y-auto flex-1">
                                                     <div className="p-4 space-y-4">
+
+                                                        {/* Screens */}
+                                                        {project.screens && (
+                                                            <div>
+                                                                <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wide mb-2">Screens</h3>
+                                                                <div className="-mx-4 flex gap-3 overflow-x-auto px-4 pb-2 snap-x snap-mandatory scroll-px-4 sm:mx-0 sm:grid sm:grid-cols-4 sm:overflow-visible sm:px-0 sm:pb-0">
+                                                                    {project.screens.map((screen) => (
+                                                                        <figure key={screen.src} className="w-[42%] shrink-0 snap-start sm:w-auto">
+                                                                            <PhoneFrame src={screen.src} alt={screen.alt} sizes="(max-width: 640px) 42vw, 160px" className="w-full" />
+                                                                            <figcaption className="mt-2 text-[10px] leading-snug text-muted-foreground">{screen.alt}</figcaption>
+                                                                        </figure>
+                                                                    ))}
+                                                                </div>
+                                                            </div>
+                                                        )}
 
                                                         {/* Problem & Solution - Priority Focus */}
                                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
