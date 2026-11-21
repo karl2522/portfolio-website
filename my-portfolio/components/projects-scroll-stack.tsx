@@ -6,17 +6,75 @@ import { useEffect, useState } from "react"
 import { FaArrowPointer, FaBookOpen, FaGithub, FaXmark } from "react-icons/fa6"
 import ScrollStack, { ScrollStackItem } from "./scroll-stack"
 
-// Outer phone frame ratio, sized so the screen inside keeps the screenshots' 1170 × 2553 shape.
-const PHONE_ASPECT = "1000 / 2106"
+// A titanium iPhone-style device drawn in CSS. Every measurement is in container
+// units (cqw = 1% of the device width) so the frame looks the same at any size.
+// The screen keeps the screenshots' 1170 × 2553 shape: 91cqw wide inside a
+// 4.5cqw frame on each side gives a 100 × 207.56 device.
+const PHONE_ASPECT = "100 / 207.56"
+const SIDE_BUTTON = "linear-gradient(90deg, #1d1e21 0%, #6a6d73 45%, #3a3c40 70%, #1d1e21 100%)"
+const SIDE_BUTTONS: { side: "left" | "right"; top: string; height: string }[] = [
+    { side: "left", top: "17.5%", height: "4.2%" }, // action button
+    { side: "left", top: "25%", height: "7.8%" }, // volume up
+    { side: "left", top: "34.5%", height: "7.8%" }, // volume down
+    { side: "right", top: "27%", height: "12%" }, // side button
+]
+const ANTENNA_LINES = ["9%", "91%"]
 
 function PhoneFrame({ src, alt, className = "", sizes, priority = false }: { src: string; alt: string; className?: string; sizes: string; priority?: boolean }) {
     return (
-        <div
-            className={`rounded-[16%/7.6%] bg-neutral-950 p-[3.2%] shadow-2xl shadow-black/40 ring-1 ring-black/10 dark:ring-white/10 ${className}`}
-            style={{ aspectRatio: PHONE_ASPECT }}
-        >
-            <div className="relative h-full w-full overflow-hidden rounded-[13%/6%] bg-[#0e1b1e]">
-                <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" />
+        <div className={`relative ${className}`} style={{ aspectRatio: PHONE_ASPECT }}>
+            <div className="absolute inset-0" style={{ containerType: "size" }}>
+                {SIDE_BUTTONS.map((b) => (
+                    <span
+                        key={b.side + b.top}
+                        aria-hidden
+                        className="absolute"
+                        style={{ [b.side]: "-0.6cqw", top: b.top, height: b.height, width: "1.4cqw", borderRadius: "0.7cqw", background: SIDE_BUTTON }}
+                    />
+                ))}
+                {/* Titanium band */}
+                <div
+                    className="absolute inset-0"
+                    style={{
+                        padding: "1.4cqw",
+                        borderRadius: "17.1cqw",
+                        background: "linear-gradient(150deg, #8a8d93 0%, #3a3c41 11%, #1c1d20 30%, #2f3135 52%, #18191b 74%, #4a4d53 92%, #7c7f85 100%)",
+                        boxShadow: [
+                            "inset 0 0 0 0.2cqw rgba(255,255,255,0.14)",
+                            "inset 0 0.6cqw 0.8cqw rgba(255,255,255,0.06)",
+                            "0 0 0 0.12cqw rgba(0,0,0,0.75)",
+                            "0 1.5cqw 3cqw rgba(0,0,0,0.35)",
+                            "0 8cqw 16cqw -3cqw rgba(0,0,0,0.6)",
+                        ].join(", "),
+                    }}
+                >
+                    {ANTENNA_LINES.map((top) =>
+                        (["left", "right"] as const).map((side) => (
+                            <span key={side + top} aria-hidden className="absolute" style={{ [side]: 0, top, width: "1.4cqw", height: "0.7cqw", background: "rgba(10,10,12,0.55)" }} />
+                        )),
+                    )}
+                    {/* Black bezel */}
+                    <div
+                        className="h-full w-full"
+                        style={{
+                            padding: "3.1cqw",
+                            borderRadius: "15.7cqw",
+                            background: "#030404",
+                            boxShadow: "inset 0 0 0 0.25cqw rgba(0,0,0,0.9), inset 0 0 0 0.5cqw rgba(255,255,255,0.04)",
+                        }}
+                    >
+                        {/* Screen */}
+                        <div className="relative h-full w-full overflow-hidden bg-[#0e1b1e]" style={{ borderRadius: "12.6cqw" }}>
+                            <Image src={src} alt={alt} fill sizes={sizes} priority={priority} className="object-cover" />
+                            {/* Glass reflection */}
+                            <div
+                                aria-hidden
+                                className="pointer-events-none absolute inset-0"
+                                style={{ background: "linear-gradient(118deg, rgba(255,255,255,0.11) 0%, rgba(255,255,255,0.04) 26%, rgba(255,255,255,0) 44%)" }}
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
@@ -24,22 +82,24 @@ function PhoneFrame({ src, alt, className = "", sizes, priority = false }: { src
 
 function PhoneShowcase({ screens, title }: { screens: { src: string; alt: string }[]; title: string }) {
     const [front, left, right] = screens
+    const side = "absolute h-[86%] motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-out"
     return (
         <div className="relative flex h-[280px] sm:h-[340px] lg:h-[380px] w-full items-center justify-center">
-            <div aria-hidden className="absolute inset-x-[12%] inset-y-[10%] rounded-full bg-accent/20 blur-3xl" />
-            <PhoneFrame
-                src={left.src}
-                alt={`${title}: ${left.alt}`}
-                sizes="(max-width: 768px) 30vw, 15vw"
-                className="absolute h-[84%] -translate-x-[62%] translate-y-[4%] -rotate-[7deg] motion-safe:transition-transform motion-safe:duration-500 group-hover:-translate-x-[70%] group-hover:-rotate-[9deg]"
+            {/* Brand-colored light behind the devices */}
+            <div
+                aria-hidden
+                className="absolute inset-x-[6%] inset-y-[4%] blur-2xl"
+                style={{ background: "radial-gradient(closest-side, rgba(94,211,195,0.32), rgba(94,211,195,0.1) 55%, rgba(94,211,195,0) 100%)" }}
             />
-            <PhoneFrame
-                src={right.src}
-                alt={`${title}: ${right.alt}`}
-                sizes="(max-width: 768px) 30vw, 15vw"
-                className="absolute h-[84%] translate-x-[62%] translate-y-[4%] rotate-[7deg] motion-safe:transition-transform motion-safe:duration-500 group-hover:translate-x-[70%] group-hover:rotate-[9deg]"
-            />
-            <PhoneFrame src={front.src} alt={`${title}: ${front.alt}`} sizes="(max-width: 768px) 40vw, 20vw" className="relative z-10 h-full" />
+            <div className={`${side} -translate-x-[80%] translate-y-[5%] brightness-[0.72] group-hover:-translate-x-[86%]`}>
+                <PhoneFrame src={left.src} alt={`${title}: ${left.alt}`} sizes="(max-width: 768px) 30vw, 15vw" className="h-full" />
+            </div>
+            <div className={`${side} translate-x-[80%] translate-y-[5%] brightness-[0.72] group-hover:translate-x-[86%]`}>
+                <PhoneFrame src={right.src} alt={`${title}: ${right.alt}`} sizes="(max-width: 768px) 30vw, 15vw" className="h-full" />
+            </div>
+            {/* Contact shadow under the front device */}
+            <div aria-hidden className="absolute bottom-[-1%] z-10 h-[5%] w-[34%] rounded-[50%] bg-black/70 blur-lg" />
+            <PhoneFrame src={front.src} alt={`${title}: ${front.alt}`} sizes="(max-width: 768px) 40vw, 20vw" className="z-20 h-full" />
         </div>
     )
 }
